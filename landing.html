@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitAI Coach - Your AI-Powered Personal Fitness Journey</title>
+    <link rel="stylesheet" href="landing-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="FitAI Coach Logo" class="logo-image">
+                <span class="logo-text">FitAI Coach</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" data-i18n="nav.features">Features</a>
+                <a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
+                <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+                <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                    <span class="theme-toggle-icon">🌓</span>
+                </button>
+                <div class="language-toggle">
+                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="bm" onclick="switchLanguage('bm')">BM</button>
+                </div>
+                <button class="btn-nav-login" onclick="showLoginModal()" data-i18n="nav.login">Login</button>
+                <button class="btn-nav-signup" onclick="showSignupModal()" data-i18n="nav.getStarted">Get Started Free</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🇲🇾 Made for Malaysia & Southeast Asia</span>
+                </div>
+                <h1 class="hero-title">
+                    Your AI-Powered<br>
+                    <span class="gradient-text">Personal Fitness Coach</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Get personalized workout plans, nutrition guidance, and 24/7 AI coaching support. 
+                    Transform your fitness journey with intelligent, adaptive training designed for you.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn-primary-large" onclick="showSignupModal()">
+                        Start Your Free Journey
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-secondary-large" onclick="scrollToDemo()">
+                        <span class="play-icon">▶</span>
+                        Watch Demo
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Workouts Generated</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label">User Rating</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-mockup">
+                    <div class="mockup-screen">
+                        <div class="mockup-header">
+                            <div class="mockup-dots">
+                                <span></span><span></span><span></span>
+                            </div>
+                        </div>
+                        <div class="mockup-content">
+                            <div class="mockup-card">
+                                <div class="card-icon">💪</div>
+                                <h3>Today's Workout</h3>
+                                <p>Upper Body Strength</p>
+                                <div class="progress-bar-mockup">
+                                    <div class="progress-fill-mockup"></div>
+                                </div>
+                            </div>
+                            <div class="mockup-card">
+                                <div class="card-icon">🥗</div>
+                                <h3>Meal Plan</h3>
+                                <p>Nasi Lemak Sihat - 450 kcal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">Everything You Need to Succeed</h2>
+                <p class="section-subtitle">Powered by AI, designed for real results</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon-large">🎯</div>
+                    <h3>Personalized Workout Plans</h3>
+                    <p>AI-generated workout plans tailored to your fitness level, goals, and available equipment. From beginner to advanced, home to gym.</p>
+                    <ul class="feature-list">
+                        <li>✓ 7-30 day custom plans</li>
+                        <li>✓ Adaptive difficulty scaling</li>
+                        <li>✓ No equipment to full gym options</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">🥗</div>
+                    <h3>Malaysian Nutrition Guidance</h3>
+                    <p>Get meal plans featuring local halal cuisine. Healthy versions of Nasi Lemak, Ayam Percik, and more with calorie tracking.</p>
+                    <ul class="feature-list">
+                        <li>✓ Halal meal suggestions</li>
+                        <li>✓ Local Malaysian recipes</li>
+                        <li>✓ Macro & calorie breakdown</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">💬</div>
+                    <h3>24/7 AI Coach Chat</h3>
+                    <p>Your personal fitness coach available anytime. Get motivation, adjust workouts, ask questions, and receive instant support.</p>
+                    <ul class="feature-list">
+                        <li>✓ Instant responses</li>
+                        <li>✓ Motivational support</li>
+                        <li>✓ Workout adjustments</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Visualize your transformation with weight charts, workout logs, and progress photos. Stay motivated by seeing your results.</p>
+                    <ul class="feature-list">
+                        <li>✓ Weight tracking charts</li>
+                        <li>✓ Workout history</li>
+                        <li>✓ Progress photos</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">🌐</div>
+                    <h3>Bilingual Support</h3>
+                    <p>Full support for English and Bahasa Melayu. Switch languages instantly to use the app in your preferred language.</p>
+                    <ul class="feature-list">
+                        <li>✓ English & Bahasa Melayu</li>
+                        <li>✓ Instant language toggle</li>
+                        <li>✓ Culturally relevant content</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">🌓</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Modern, clean interface with dark and light modes. Responsive design works perfectly on all devices - phone, tablet, or desktop.</p>
+                    <ul class="feature-list">
+                        <li>✓ Dark & light themes</li>
+                        <li>✓ Mobile responsive</li>
+                        <li>✓ Smooth animations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">How FitAI Coach Works</h2>
+                <p class="section-subtitle">Start your fitness journey in 3 simple steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Profile</h3>
+                        <p>Tell us about yourself - your age, weight, height, fitness level, and goals. Takes less than 2 minutes.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-icon">👤</div>
+                    </div>
+                </div>
+
+                <div class="step-arrow">→</div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get Your AI Plan</h3>
+                        <p>Our AI instantly generates a personalized workout and nutrition plan designed specifically for you.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-icon">🤖</div>
+                    </div>
+                </div>
+
+                <div class="step-arrow">→</div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Training</h3>
+                        <p>Follow your plan, track progress, and chat with your AI coach anytime. Watch yourself transform!</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-icon">💪</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Start free, upgrade when you're ready</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-box">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">
+                            <span class="price-currency">RM</span>
+                            <span class="price-amount">0</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-desc">Perfect to get started</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> 1 workout plan per week</li>
+                        <li><span class="check">✓</span> Basic nutrition tips</li>
+                        <li><span class="check">✓</span> Limited AI chat (5 messages)</li>
+                        <li><span class="check">✓</span> Basic progress tracking</li>
+                        <li><span class="check">✓</span> English & Bahasa Melayu</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="showSignupModal()">Start Free</button>
+                </div>
+
+                <div class="pricing-box featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">
+                            <span class="price-currency">RM</span>
+                            <span class="price-amount">29</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-desc">For serious fitness enthusiasts</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Unlimited workout plans</li>
+                        <li><span class="check">✓</span> Personalized meal plans</li>
+                        <li><span class="check">✓</span> Unlimited AI coach chat</li>
+                        <li><span class="check">✓</span> Advanced progress tracking</li>
+                        <li><span class="check">✓</span> Exercise demo images</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                        <li><span class="check">✓</span> All future features</li>
+                    </ul>
+                    <button class="btn-pricing-premium" onclick="showSignupModal()">Start Premium Trial</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">What Our Users Say</h2>
+                <p class="section-subtitle">Join thousands of satisfied fitness enthusiasts</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"FitAI Coach changed my life! The AI-generated workouts are perfect for my busy schedule, and the halal meal suggestions are a game-changer."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <div class="author-name">Ahmad Razak</div>
+                            <div class="author-location">Kuala Lumpur</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Lost 8kg in 2 months! The personalized plans and AI coach kept me motivated. Best fitness app I've ever used."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <div class="author-name">Siti Nurhaliza</div>
+                            <div class="author-location">Penang</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The bilingual support is amazing! I can switch between English and BM easily. The workouts are challenging but achievable."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <div class="author-name">Raj Kumar</div>
+                            <div class="author-location">Johor Bahru</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Fitness Journey?</h2>
+                <p>Join thousands of Malaysians achieving their fitness goals with AI-powered coaching</p>
+                <button class="btn-cta-large" onclick="showSignupModal()">
+                    Get Started Free - No Credit Card Required
+                </button>
+                <p class="cta-note">✓ Free forever plan available  ✓ Upgrade anytime  ✓ Cancel anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="FitAI Coach Logo" class="logo-image">
+                        <span>FitAI Coach</span>
+                    </div>
+                    <p class="footer-desc">Your AI-powered personal fitness coach for Malaysia and Southeast Asia.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FitAI Coach. All rights reserved. Made with ❤️ in Malaysia 🇲🇾</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+                <h2>Welcome Back!</h2>
+                <p class="modal-subtitle">Login to continue your fitness journey</p>
+                
+                <form class="auth-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="login-email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn-modal-primary">Login</button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <button class="btn-social google" onclick="loginWithGoogle()">
+                    <span class="social-icon">G</span>
+                    Continue with Google
+                </button>
+
+                <p class="modal-footer-text">
+                    Don't have an account? 
+                    <a href="#" onclick="switchToSignup()">Sign up free</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeSignupModal()">&times;</button>
+                <h2>Start Your Free Journey</h2>
+                <p class="modal-subtitle">Create your account in seconds</p>
+                
+                <form class="auth-form" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="signup-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signup-email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password (min 6 characters)" required minlength="6">
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+                    </div>
+                    <button type="submit" class="btn-modal-primary">Create Free Account</button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <button class="btn-social google" onclick="signupWithGoogle()">
+                    <span class="social-icon">G</span>
+                    Continue with Google
+                </button>
+
+                <p class="modal-footer-text">
+                    Already have an account? 
+                    <a href="#" onclick="switchToLogin()">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+    
+    <!-- Firebase Configuration & Functions -->
+    <script src="firebase-config.js"></script>
+    <script src="firebase-auth.js"></script>
+    <script src="firebase-database.js"></script>
+    
+    <!-- Translations -->
+    <script src="landing-translations.js"></script>
+    
+    <!-- Landing Page Script -->
+    <script src="landing-script.js"></script>
+</body>
+</html>
