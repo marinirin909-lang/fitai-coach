@@ -22,6 +22,10 @@ const translations = {
         'hero.stats.workouts': 'Workouts Generated',
         'hero.stats.rating': 'User Rating',
         
+        // Video Section
+        'video.title': 'See FitAI Coach in Action',
+        'video.subtitle': 'Watch how our AI-powered fitness coach transforms your workout experience',
+        
         // Features Section
         'features.title': 'Everything You Need to Transform Your Fitness',
         'features.subtitle': 'Powered by AI, designed for results',
@@ -150,6 +154,10 @@ const translations = {
         'hero.stats.users': 'Pengguna Aktif',
         'hero.stats.workouts': 'Senaman Dijana',
         'hero.stats.rating': 'Penilaian Pengguna',
+        
+        // Video Section
+        'video.title': 'Lihat FitAI Coach Dalam Aksi',
+        'video.subtitle': 'Tonton bagaimana jurulatih kecergasan berkuasa AI kami mengubah pengalaman senaman anda',
         
         // Features Section
         'features.title': 'Semua Yang Anda Perlukan Untuk Mengubah Kecergasan',

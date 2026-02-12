@@ -3,537 +3,495 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitAI Coach - AI Personalized Fitness Coach</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>FitAI Coach - Your AI-Powered Personal Fitness Journey</title>
+    <link rel="stylesheet" href="landing-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <!-- Welcome Screen -->
-        <div id="welcome-screen" class="screen active">
-            <div class="welcome-container">
-                <div class="logo">
-                    <img src="logo.png" alt="FitAI Coach Logo" class="logo-image-large">
-                </div>
-                <h1 class="welcome-title" data-en="Welcome to FitAI Coach" data-bm="Selamat Datang ke FitAI Coach">Welcome to FitAI Coach</h1>
-                <p class="welcome-subtitle" data-en="Your AI-Powered Personal Fitness Journey Starts Here" data-bm="Perjalanan Kecergasan Peribadi Berkuasa AI Anda Bermula Di Sini">Your AI-Powered Personal Fitness Journey Starts Here</p>
-                
-                <div class="feature-cards">
-                    <div class="feature-card">
-                        <div class="feature-icon">🎯</div>
-                        <h3 data-en="Personalized Plans" data-bm="Pelan Diperibadikan">Personalized Plans</h3>
-                        <p data-en="AI-generated workout plans tailored to your goals" data-bm="Pelan senaman dijana AI disesuaikan dengan matlamat anda">AI-generated workout plans tailored to your goals</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🥗</div>
-                        <h3 data-en="Nutrition Tips" data-bm="Tip Pemakanan">Nutrition Tips</h3>
-                        <p data-en="Local halal meal suggestions and healthy recipes" data-bm="Cadangan makanan halal tempatan dan resipi sihat">Local halal meal suggestions and healthy recipes</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">💬</div>
-                        <h3 data-en="AI Coach Chat" data-bm="Sembang Jurulatih AI">AI Coach Chat</h3>
-                        <p data-en="24/7 motivational support and guidance" data-bm="Sokongan dan bimbingan motivasi 24/7">24/7 motivational support and guidance</p>
-                    </div>
-                </div>
-
-                <button class="btn-primary" onclick="startOnboarding()" data-en="Get Started" data-bm="Mulakan">Get Started</button>
-                
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="logo.png" alt="FitAI Coach Logo" class="logo-image">
+                <span class="logo-text">FitAI Coach</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features" data-i18n="nav.features">Features</a>
+                <a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
+                <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
+                <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
+                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                    <span class="theme-toggle-icon">🌓</span>
+                </button>
                 <div class="language-toggle">
-                    <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
-                    <button class="lang-btn" onclick="setLanguage('bm')">BM</button>
+                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
+                    <button class="lang-btn" data-lang="bm" onclick="switchLanguage('bm')">BM</button>
+                </div>
+                <button class="btn-nav-login" onclick="showLoginModal()" data-i18n="nav.login">Login</button>
+                <button class="btn-nav-signup" onclick="showSignupModal()" data-i18n="nav.getStarted">Get Started Free</button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span data-i18n="hero.badge">🇲🇾 Made for Malaysia & Southeast Asia</span>
+                </div>
+                <h1 class="hero-title">
+                    <span data-i18n="hero.title1">Your AI-Powered</span><br>
+                    <span class="gradient-text" data-i18n="hero.title2">Personal Fitness Coach</span>
+                </h1>
+                <p class="hero-subtitle" data-i18n="hero.subtitle">
+                    Get personalized workout plans, nutrition guidance, and 24/7 AI coaching support. 
+                    Transform your fitness journey with intelligent, adaptive training designed for you.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn-primary-large" onclick="showSignupModal()">
+                        <span data-i18n="hero.cta.primary">Start Your Free Journey</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                    <button class="btn-secondary-large" onclick="scrollToDemo()">
+                        <span class="play-icon">▶</span>
+                        <span data-i18n="hero.cta.secondary">Watch Demo</span>
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label" data-i18n="hero.stats.users">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label" data-i18n="hero.stats.workouts">Workouts Generated</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">4.9★</div>
+                        <div class="stat-label" data-i18n="hero.stats.rating">User Rating</div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Onboarding Screen -->
-        <div id="onboarding-screen" class="screen">
-            <div class="onboarding-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="onboarding-progress"></div>
-                </div>
-                
-                <div class="onboarding-step active" id="step-1">
-                    <h2 data-en="Tell us about yourself" data-bm="Beritahu kami tentang diri anda">Tell us about yourself</h2>
-                    <div class="form-group">
-                        <label data-en="Name" data-bm="Nama">Name</label>
-                        <input type="text" id="user-name" placeholder="John Doe">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label data-en="Age" data-bm="Umur">Age</label>
-                            <input type="number" id="user-age" placeholder="30" min="13" max="100">
+            <div class="hero-image">
+                <div class="hero-mockup">
+                    <div class="mockup-screen">
+                        <div class="mockup-header">
+                            <div class="mockup-dots">
+                                <span></span><span></span><span></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label data-en="Gender" data-bm="Jantina">Gender</label>
-                            <select id="user-gender">
-                                <option value="male" data-en="Male" data-bm="Lelaki">Male</option>
-                                <option value="female" data-en="Female" data-bm="Perempuan">Female</option>
-                                <option value="other" data-en="Other" data-bm="Lain-lain">Other</option>
-                            </select>
+                        <div class="mockup-content">
+                            <div class="mockup-card">
+                                <div class="card-icon">💪</div>
+                                <h3>Today's Workout</h3>
+                                <p>Upper Body Strength</p>
+                                <div class="progress-bar-mockup">
+                                    <div class="progress-fill-mockup"></div>
+                                </div>
+                            </div>
+                            <div class="mockup-card">
+                                <div class="card-icon">🥗</div>
+                                <h3>Meal Plan</h3>
+                                <p>Nasi Lemak Sihat - 450 kcal</p>
+                            </div>
                         </div>
-                    </div>
-                    <button class="btn-primary" onclick="nextStep(2)" data-en="Next" data-bm="Seterusnya">Next</button>
-                </div>
-
-                <div class="onboarding-step" id="step-2">
-                    <h2 data-en="Your measurements" data-bm="Ukuran anda">Your measurements</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label data-en="Height (cm)" data-bm="Tinggi (cm)">Height (cm)</label>
-                            <input type="number" id="user-height" placeholder="175" min="100" max="250">
-                        </div>
-                        <div class="form-group">
-                            <label data-en="Weight (kg)" data-bm="Berat (kg)">Weight (kg)</label>
-                            <input type="number" id="user-weight" placeholder="70" min="30" max="300">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label data-en="Activity Level" data-bm="Tahap Aktiviti">Activity Level</label>
-                        <select id="activity-level">
-                            <option value="sedentary" data-en="Sedentary (little or no exercise)" data-bm="Tidak aktif (sedikit atau tiada senaman)">Sedentary (little or no exercise)</option>
-                            <option value="light" data-en="Lightly active (1-3 days/week)" data-bm="Sedikit aktif (1-3 hari/minggu)">Lightly active (1-3 days/week)</option>
-                            <option value="moderate" data-en="Moderately active (3-5 days/week)" data-bm="Sederhana aktif (3-5 hari/minggu)">Moderately active (3-5 days/week)</option>
-                            <option value="very" data-en="Very active (6-7 days/week)" data-bm="Sangat aktif (6-7 hari/minggu)">Very active (6-7 days/week)</option>
-                            <option value="extra" data-en="Extra active (athlete)" data-bm="Sangat aktif (atlet)">Extra active (athlete)</option>
-                        </select>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn-secondary" onclick="prevStep(1)" data-en="Back" data-bm="Kembali">Back</button>
-                        <button class="btn-primary" onclick="nextStep(3)" data-en="Next" data-bm="Seterusnya">Next</button>
-                    </div>
-                </div>
-
-                <div class="onboarding-step" id="step-3">
-                    <h2 data-en="Your fitness goals" data-bm="Matlamat kecergasan anda">Your fitness goals</h2>
-                    <div class="form-group">
-                        <label data-en="Fitness Level" data-bm="Tahap Kecergasan">Fitness Level</label>
-                        <select id="fitness-level">
-                            <option value="beginner" data-en="Beginner" data-bm="Pemula">Beginner</option>
-                            <option value="intermediate" data-en="Intermediate" data-bm="Pertengahan">Intermediate</option>
-                            <option value="advanced" data-en="Advanced" data-bm="Mahir">Advanced</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label data-en="Primary Goal" data-bm="Matlamat Utama">Primary Goal</label>
-                        <select id="user-goal">
-                            <option value="lose-weight" data-en="Lose Weight" data-bm="Kurangkan Berat">Lose Weight</option>
-                            <option value="build-muscle" data-en="Build Muscle" data-bm="Bina Otot">Build Muscle</option>
-                            <option value="get-fit" data-en="Get Fit & Healthy" data-bm="Jadi Cergas & Sihat">Get Fit & Healthy</option>
-                            <option value="flexibility" data-en="Improve Flexibility" data-bm="Tingkatkan Fleksibiliti">Improve Flexibility</option>
-                            <option value="endurance" data-en="Build Endurance" data-bm="Bina Daya Tahan">Build Endurance</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label data-en="Dietary Preference" data-bm="Keutamaan Diet">Dietary Preference</label>
-                        <select id="diet-preference">
-                            <option value="halal" data-en="Halal" data-bm="Halal">Halal</option>
-                            <option value="vegetarian" data-en="Vegetarian" data-bm="Vegetarian">Vegetarian</option>
-                            <option value="vegan" data-en="Vegan" data-bm="Vegan">Vegan</option>
-                            <option value="no-restriction" data-en="No Restriction" data-bm="Tiada Sekatan">No Restriction</option>
-                        </select>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn-secondary" onclick="prevStep(2)" data-en="Back" data-bm="Kembali">Back</button>
-                        <button class="btn-primary" onclick="completeOnboarding()" data-en="Complete Setup" data-bm="Selesaikan Persediaan">Complete Setup</button>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Main Dashboard -->
-        <div id="dashboard-screen" class="screen">
-            <nav class="navbar">
-                <div class="nav-brand">FitAI Coach</div>
-                <div class="nav-actions">
-                    <button class="btn-icon" onclick="toggleTheme()" title="Toggle Theme">🌓</button>
-                    <button class="btn-upgrade" onclick="showSubscription()" data-en="Upgrade to Premium" data-bm="Naik Taraf ke Premium">Upgrade to Premium</button>
-                    <button class="btn-icon" onclick="logout()" title="Logout">🚪</button>
-                </div>
-            </nav>
-
-            <div class="dashboard-container">
-                <div class="sidebar">
-                    <div class="menu-item active" onclick="showSection('home')" data-section="home">
-                        <span class="menu-icon">🏠</span>
-                        <span data-en="Home" data-bm="Laman Utama">Home</span>
-                    </div>
-                    <div class="menu-item" onclick="showSection('workout')" data-section="workout">
-                        <span class="menu-icon">💪</span>
-                        <span data-en="Workout Plan" data-bm="Pelan Senaman">Workout Plan</span>
-                    </div>
-                    <div class="menu-item" onclick="showSection('nutrition')" data-section="nutrition">
-                        <span class="menu-icon">🥗</span>
-                        <span data-en="Nutrition" data-bm="Pemakanan">Nutrition</span>
-                    </div>
-                    <div class="menu-item" onclick="showSection('chat')" data-section="chat">
-                        <span class="menu-icon">💬</span>
-                        <span data-en="AI Coach" data-bm="Jurulatih AI">AI Coach</span>
-                    </div>
-                    <div class="menu-item" onclick="showSection('progress')" data-section="progress">
-                        <span class="menu-icon">📊</span>
-                        <span data-en="Progress" data-bm="Kemajuan">Progress</span>
-                    </div>
-                    <div class="menu-item" onclick="showSection('settings')" data-section="settings">
-                        <span class="menu-icon">⚙️</span>
-                        <span data-en="Settings" data-bm="Tetapan">Settings</span>
-                    </div>
-                </div>
-
-                <div class="main-content">
-                    <!-- Home Section -->
-                    <section id="home-section" class="content-section active">
-                        <div class="welcome-back">
-                            <h1 data-en="Welcome back" data-bm="Selamat kembali">Welcome back, <span id="user-name-display"></span>!</h1>
-                            <p class="motivation-quote" id="daily-quote"></p>
-                        </div>
-
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <div class="stat-icon">🎯</div>
-                                <div class="stat-info">
-                                    <h3 id="user-goal-display">Lose Weight</h3>
-                                    <p data-en="Current Goal" data-bm="Matlamat Semasa">Current Goal</p>
-                                </div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">⚖️</div>
-                                <div class="stat-info">
-                                    <h3 id="user-weight-display">70 kg</h3>
-                                    <p data-en="Current Weight" data-bm="Berat Semasa">Current Weight</p>
-                                </div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">🔥</div>
-                                <div class="stat-info">
-                                    <h3 id="user-bmr-display">1800</h3>
-                                    <p data-en="Daily Calories" data-bm="Kalori Harian">Daily Calories</p>
-                                </div>
-                            </div>
-                            <div class="stat-card">
-                                <div class="stat-icon">📅</div>
-                                <div class="stat-info">
-                                    <h3 id="workout-streak">0</h3>
-                                    <p data-en="Day Streak" data-bm="Hari Berturut-turut">Day Streak</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="today-workout">
-                            <h2 data-en="Today's Workout" data-bm="Senaman Hari Ini">Today's Workout</h2>
-                            <div id="today-workout-content" class="workout-preview">
-                                <p data-en="Generate your first workout plan to get started!" data-bm="Jana pelan senaman pertama anda untuk bermula!">Generate your first workout plan to get started!</p>
-                                <button class="btn-primary" onclick="showSection('workout')" data-en="Generate Plan" data-bm="Jana Pelan">Generate Plan</button>
-                            </div>
-                        </div>
-
-                        <div class="quick-actions">
-                            <button class="action-btn" onclick="showSection('workout')">
-                                <span class="action-icon">💪</span>
-                                <span data-en="New Workout Plan" data-bm="Pelan Senaman Baru">New Workout Plan</span>
-                            </button>
-                            <button class="action-btn" onclick="showSection('nutrition')">
-                                <span class="action-icon">🥗</span>
-                                <span data-en="Meal Suggestions" data-bm="Cadangan Makanan">Meal Suggestions</span>
-                            </button>
-                            <button class="action-btn" onclick="showSection('chat')">
-                                <span class="action-icon">💬</span>
-                                <span data-en="Chat with Coach" data-bm="Sembang dengan Jurulatih">Chat with Coach</span>
-                            </button>
-                        </div>
-                    </section>
-
-                    <!-- Workout Section -->
-                    <section id="workout-section" class="content-section">
-                        <div class="section-header">
-                            <h1 data-en="Workout Plan Generator" data-bm="Penjana Pelan Senaman">Workout Plan Generator</h1>
-                            <button class="btn-primary" onclick="generateWorkoutPlan()" id="generate-workout-btn" data-en="Generate New Plan" data-bm="Jana Pelan Baru">Generate New Plan</button>
-                        </div>
-
-                        <div class="plan-options">
-                            <div class="form-group">
-                                <label data-en="Plan Duration" data-bm="Tempoh Pelan">Plan Duration</label>
-                                <select id="plan-duration">
-                                    <option value="7">7 Days</option>
-                                    <option value="14">14 Days (Premium)</option>
-                                    <option value="30">30 Days (Premium)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label data-en="Equipment" data-bm="Peralatan">Equipment</label>
-                                <select id="plan-equipment">
-                                    <option value="none" data-en="No Equipment (Home)" data-bm="Tiada Peralatan (Rumah)">No Equipment (Home)</option>
-                                    <option value="basic" data-en="Basic (Dumbbells, Bands)" data-bm="Asas (Dumbbell, Band)">Basic (Dumbbells, Bands)</option>
-                                    <option value="gym" data-en="Full Gym Access" data-bm="Akses Gim Penuh">Full Gym Access</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div id="workout-plan-container" class="workout-plan">
-                            <div class="empty-state">
-                                <div class="empty-icon">💪</div>
-                                <h3 data-en="No workout plan yet" data-bm="Belum ada pelan senaman">No workout plan yet</h3>
-                                <p data-en="Click 'Generate New Plan' to create your personalized workout plan" data-bm="Klik 'Jana Pelan Baru' untuk cipta pelan senaman diperibadikan anda">Click 'Generate New Plan' to create your personalized workout plan</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Nutrition Section -->
-                    <section id="nutrition-section" class="content-section">
-                        <div class="section-header">
-                            <h1 data-en="Nutrition Tips & Meal Plans" data-bm="Tip Pemakanan & Pelan Makanan">Nutrition Tips & Meal Plans</h1>
-                            <button class="btn-primary" onclick="generateNutritionPlan()" data-en="Get Daily Tips" data-bm="Dapatkan Tip Harian">Get Daily Tips</button>
-                        </div>
-
-                        <div class="nutrition-stats">
-                            <div class="nutrition-card">
-                                <h3 data-en="Daily Calorie Target" data-bm="Sasaran Kalori Harian">Daily Calorie Target</h3>
-                                <div class="calorie-display">
-                                    <span class="calorie-number" id="calorie-target">2000</span>
-                                    <span class="calorie-unit">kcal</span>
-                                </div>
-                            </div>
-                            <div class="macro-breakdown">
-                                <div class="macro-item">
-                                    <span class="macro-label" data-en="Protein" data-bm="Protein">Protein</span>
-                                    <span class="macro-value" id="protein-target">150g</span>
-                                </div>
-                                <div class="macro-item">
-                                    <span class="macro-label" data-en="Carbs" data-bm="Karbohidrat">Carbs</span>
-                                    <span class="macro-value" id="carbs-target">200g</span>
-                                </div>
-                                <div class="macro-item">
-                                    <span class="macro-label" data-en="Fats" data-bm="Lemak">Fats</span>
-                                    <span class="macro-value" id="fats-target">65g</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="nutrition-plan-container" class="nutrition-content">
-                            <div class="empty-state">
-                                <div class="empty-icon">🥗</div>
-                                <h3 data-en="No meal plan yet" data-bm="Belum ada pelan makanan">No meal plan yet</h3>
-                                <p data-en="Get personalized meal suggestions based on your goals" data-bm="Dapatkan cadangan makanan diperibadikan berdasarkan matlamat anda">Get personalized meal suggestions based on your goals</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Chat Section -->
-                    <section id="chat-section" class="content-section">
-                        <div class="section-header">
-                            <h1 data-en="AI Coach Chat" data-bm="Sembang Jurulatih AI">AI Coach Chat</h1>
-                            <div class="chat-status">
-                                <span class="status-dot"></span>
-                                <span data-en="Online" data-bm="Dalam Talian">Online</span>
-                            </div>
-                        </div>
-
-                        <div class="chat-container">
-                            <div class="chat-messages" id="chat-messages">
-                                <div class="chat-message bot">
-                                    <div class="message-avatar">🤖</div>
-                                    <div class="message-content">
-                                        <p data-en="Hello! I'm your AI fitness coach. How can I help you today?" data-bm="Hello! Saya jurulatih kecergasan AI anda. Bagaimana saya boleh membantu anda hari ini?">Hello! I'm your AI fitness coach. How can I help you today?</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="chat-input-container">
-                                <input type="text" id="chat-input" placeholder="Type your message..." data-en-placeholder="Type your message..." data-bm-placeholder="Taip mesej anda...">
-                                <button class="btn-send" onclick="sendMessage()" data-en="Send" data-bm="Hantar">Send</button>
-                            </div>
-                            <div class="chat-suggestions">
-                                <button class="suggestion-chip" onclick="quickChat('motivation')" data-en="I need motivation" data-bm="Saya perlukan motivasi">I need motivation</button>
-                                <button class="suggestion-chip" onclick="quickChat('tired')" data-en="I'm too tired today" data-bm="Saya terlalu penat hari ini">I'm too tired today</button>
-                                <button class="suggestion-chip" onclick="quickChat('progress')" data-en="Check my progress" data-bm="Semak kemajuan saya">Check my progress</button>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Progress Section -->
-                    <section id="progress-section" class="content-section">
-                        <div class="section-header">
-                            <h1 data-en="Progress Tracking" data-bm="Penjejakan Kemajuan">Progress Tracking</h1>
-                            <button class="btn-primary" onclick="logProgress()" data-en="Log Today" data-bm="Log Hari Ini">Log Today</button>
-                        </div>
-
-                        <div class="progress-tabs">
-                            <button class="tab-btn active" onclick="showProgressTab('weight')" data-en="Weight" data-bm="Berat">Weight</button>
-                            <button class="tab-btn" onclick="showProgressTab('workouts')" data-en="Workouts" data-bm="Senaman">Workouts</button>
-                            <button class="tab-btn" onclick="showProgressTab('photos')" data-en="Photos" data-bm="Foto">Photos</button>
-                        </div>
-
-                        <div id="progress-weight" class="progress-tab-content active">
-                            <div class="chart-container">
-                                <canvas id="weight-chart"></canvas>
-                            </div>
-                            <div class="progress-log">
-                                <h3 data-en="Weight History" data-bm="Sejarah Berat">Weight History</h3>
-                                <div id="weight-log-list" class="log-list"></div>
-                            </div>
-                        </div>
-
-                        <div id="progress-workouts" class="progress-tab-content">
-                            <div class="workout-stats">
-                                <div class="stat-box">
-                                    <h3 id="total-workouts">0</h3>
-                                    <p data-en="Total Workouts" data-bm="Jumlah Senaman">Total Workouts</p>
-                                </div>
-                                <div class="stat-box">
-                                    <h3 id="total-minutes">0</h3>
-                                    <p data-en="Minutes Exercised" data-bm="Minit Bersenam">Minutes Exercised</p>
-                                </div>
-                                <div class="stat-box">
-                                    <h3 id="calories-burned">0</h3>
-                                    <p data-en="Calories Burned" data-bm="Kalori Dibakar">Calories Burned</p>
-                                </div>
-                            </div>
-                            <div id="workout-history" class="workout-history"></div>
-                        </div>
-
-                        <div id="progress-photos" class="progress-tab-content">
-                            <div class="photo-grid" id="progress-photos-grid">
-                                <div class="empty-state">
-                                    <div class="empty-icon">📸</div>
-                                    <h3 data-en="No progress photos yet" data-bm="Belum ada foto kemajuan">No progress photos yet</h3>
-                                    <p data-en="Start tracking your transformation!" data-bm="Mula jejak transformasi anda!">Start tracking your transformation!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Settings Section -->
-                    <section id="settings-section" class="content-section">
-                        <h1 data-en="Settings" data-bm="Tetapan">Settings</h1>
-                        
-                        <div class="settings-group">
-                            <h3 data-en="Profile" data-bm="Profil">Profile</h3>
-                            <div class="setting-item">
-                                <label data-en="Name" data-bm="Nama">Name</label>
-                                <input type="text" id="settings-name" class="settings-input">
-                            </div>
-                            <div class="setting-item">
-                                <label data-en="Email" data-bm="E-mel">Email</label>
-                                <input type="email" id="settings-email" class="settings-input" placeholder="your@email.com">
-                            </div>
-                            <button class="btn-secondary" onclick="updateProfile()" data-en="Update Profile" data-bm="Kemas Kini Profil">Update Profile</button>
-                        </div>
-
-                        <div class="settings-group">
-                            <h3 data-en="Preferences" data-bm="Keutamaan">Preferences</h3>
-                            <div class="setting-item">
-                                <label data-en="Language" data-bm="Bahasa">Language</label>
-                                <select id="settings-language" onchange="setLanguage(this.value)">
-                                    <option value="en">English</option>
-                                    <option value="bm">Bahasa Melayu</option>
-                                </select>
-                            </div>
-                            <div class="setting-item">
-                                <label data-en="Theme" data-bm="Tema">Theme</label>
-                                <select id="settings-theme" onchange="setTheme(this.value)">
-                                    <option value="light" data-en="Light" data-bm="Terang">Light</option>
-                                    <option value="dark" data-en="Dark" data-bm="Gelap">Dark</option>
-                                    <option value="auto" data-en="Auto" data-bm="Auto">Auto</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="settings-group">
-                            <h3 data-en="Notifications" data-bm="Pemberitahuan">Notifications</h3>
-                            <div class="setting-item toggle-item">
-                                <label data-en="Daily Workout Reminders" data-bm="Peringatan Senaman Harian">Daily Workout Reminders</label>
-                                <label class="toggle">
-                                    <input type="checkbox" id="notif-workout" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                            <div class="setting-item toggle-item">
-                                <label data-en="Meal Time Reminders" data-bm="Peringatan Waktu Makan">Meal Time Reminders</label>
-                                <label class="toggle">
-                                    <input type="checkbox" id="notif-meal" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                            <div class="setting-item toggle-item">
-                                <label data-en="Progress Updates" data-bm="Kemas Kini Kemajuan">Progress Updates</label>
-                                <label class="toggle">
-                                    <input type="checkbox" id="notif-progress" checked>
-                                    <span class="toggle-slider"></span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="settings-group">
-                            <h3 data-en="Subscription" data-bm="Langganan">Subscription</h3>
-                            <div class="subscription-status">
-                                <div class="status-badge free" id="subscription-badge">
-                                    <span data-en="Free Plan" data-bm="Pelan Percuma">Free Plan</span>
-                                </div>
-                                <p data-en="Upgrade to Premium for unlimited features" data-bm="Naik taraf ke Premium untuk ciri tanpa had">Upgrade to Premium for unlimited features</p>
-                                <button class="btn-primary" onclick="showSubscription()" data-en="View Plans" data-bm="Lihat Pelan">View Plans</button>
-                            </div>
-                        </div>
-
-                        <div class="settings-group">
-                            <h3 data-en="Account" data-bm="Akaun">Account</h3>
-                            <div class="subscription-status">
-                                <p data-en="Logged in as:" data-bm="Log masuk sebagai:">Logged in as: <strong id="logged-in-email"></strong></p>
-                                <button class="btn-secondary" onclick="logout()" data-en="Logout" data-bm="Log Keluar">Logout</button>
-                            </div>
-                        </div>
-                    </section>
+    <!-- Video Demo Section -->
+    <section class="video-section" id="demo">
+        <div class="container">
+            <div class="video-container">
+                <h2 class="section-title" data-i18n="video.title">See FitAI Coach in Action</h2>
+                <p class="section-subtitle" data-i18n="video.subtitle">Watch how our AI-powered fitness coach transforms your workout experience</p>
+                <div class="video-wrapper">
+                    <video class="demo-video" controls poster="logo.png">
+                        <source src="fitai.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Subscription Modal -->
-        <div id="subscription-modal" class="modal">
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title" data-i18n="features.title">Everything You Need to Succeed</h2>
+                <p class="section-subtitle" data-i18n="features.subtitle">Powered by AI, designed for real results</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon-large">🎯</div>
+                    <h3>Personalized Workout Plans</h3>
+                    <p>AI-generated workout plans tailored to your fitness level, goals, and available equipment. From beginner to advanced, home to gym.</p>
+                    <ul class="feature-list">
+                        <li>✓ 7-30 day custom plans</li>
+                        <li>✓ Adaptive difficulty scaling</li>
+                        <li>✓ No equipment to full gym options</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">🥗</div>
+                    <h3>Malaysian Nutrition Guidance</h3>
+                    <p>Get meal plans featuring local halal cuisine. Healthy versions of Nasi Lemak, Ayam Percik, and more with calorie tracking.</p>
+                    <ul class="feature-list">
+                        <li>✓ Halal meal suggestions</li>
+                        <li>✓ Local Malaysian recipes</li>
+                        <li>✓ Macro & calorie breakdown</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">💬</div>
+                    <h3>24/7 AI Coach Chat</h3>
+                    <p>Your personal fitness coach available anytime. Get motivation, adjust workouts, ask questions, and receive instant support.</p>
+                    <ul class="feature-list">
+                        <li>✓ Instant responses</li>
+                        <li>✓ Motivational support</li>
+                        <li>✓ Workout adjustments</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Visualize your transformation with weight charts, workout logs, and progress photos. Stay motivated by seeing your results.</p>
+                    <ul class="feature-list">
+                        <li>✓ Weight tracking charts</li>
+                        <li>✓ Workout history</li>
+                        <li>✓ Progress photos</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">🌐</div>
+                    <h3>Bilingual Support</h3>
+                    <p>Full support for English and Bahasa Melayu. Switch languages instantly to use the app in your preferred language.</p>
+                    <ul class="feature-list">
+                        <li>✓ English & Bahasa Melayu</li>
+                        <li>✓ Instant language toggle</li>
+                        <li>✓ Culturally relevant content</li>
+                    </ul>
+                </div>
+
+                <div class="feature-box">
+                    <div class="feature-icon-large">🌓</div>
+                    <h3>Beautiful Design</h3>
+                    <p>Modern, clean interface with dark and light modes. Responsive design works perfectly on all devices - phone, tablet, or desktop.</p>
+                    <ul class="feature-list">
+                        <li>✓ Dark & light themes</li>
+                        <li>✓ Mobile responsive</li>
+                        <li>✓ Smooth animations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">How FitAI Coach Works</h2>
+                <p class="section-subtitle">Start your fitness journey in 3 simple steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Create Your Profile</h3>
+                        <p>Tell us about yourself - your age, weight, height, fitness level, and goals. Takes less than 2 minutes.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-icon">👤</div>
+                    </div>
+                </div>
+
+                <div class="step-arrow">→</div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get Your AI Plan</h3>
+                        <p>Our AI instantly generates a personalized workout and nutrition plan designed specifically for you.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-icon">🤖</div>
+                    </div>
+                </div>
+
+                <div class="step-arrow">→</div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Training</h3>
+                        <p>Follow your plan, track progress, and chat with your AI coach anytime. Watch yourself transform!</p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="visual-icon">💪</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle">Start free, upgrade when you're ready</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-box">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">
+                            <span class="price-currency">RM</span>
+                            <span class="price-amount">0</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-desc">Perfect to get started</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> 1 workout plan per week</li>
+                        <li><span class="check">✓</span> Basic nutrition tips</li>
+                        <li><span class="check">✓</span> Limited AI chat (5 messages)</li>
+                        <li><span class="check">✓</span> Basic progress tracking</li>
+                        <li><span class="check">✓</span> English & Bahasa Melayu</li>
+                    </ul>
+                    <button class="btn-pricing" onclick="showSignupModal()">Start Free</button>
+                </div>
+
+                <div class="pricing-box featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">
+                            <span class="price-currency">RM</span>
+                            <span class="price-amount">29</span>
+                            <span class="price-period">/month</span>
+                        </div>
+                        <p class="pricing-desc">For serious fitness enthusiasts</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check">✓</span> Unlimited workout plans</li>
+                        <li><span class="check">✓</span> Personalized meal plans</li>
+                        <li><span class="check">✓</span> Unlimited AI coach chat</li>
+                        <li><span class="check">✓</span> Advanced progress tracking</li>
+                        <li><span class="check">✓</span> Exercise demo images</li>
+                        <li><span class="check">✓</span> Priority support</li>
+                        <li><span class="check">✓</span> All future features</li>
+                    </ul>
+                    <button class="btn-pricing-premium" onclick="showSignupModal()">Start Premium Trial</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">What Our Users Say</h2>
+                <p class="section-subtitle">Join thousands of satisfied fitness enthusiasts</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"FitAI Coach changed my life! The AI-generated workouts are perfect for my busy schedule, and the halal meal suggestions are a game-changer."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <div class="author-name">Ahmad Razak</div>
+                            <div class="author-location">Kuala Lumpur</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Lost 8kg in 2 months! The personalized plans and AI coach kept me motivated. Best fitness app I've ever used."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <div class="author-name">Siti Nurhaliza</div>
+                            <div class="author-location">Penang</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The bilingual support is amazing! I can switch between English and BM easily. The workouts are challenging but achievable."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <div class="author-name">Raj Kumar</div>
+                            <div class="author-location">Johor Bahru</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Fitness Journey?</h2>
+                <p>Join thousands of Malaysians achieving their fitness goals with AI-powered coaching</p>
+                <button class="btn-cta-large" onclick="showSignupModal()">
+                    Get Started Free - No Credit Card Required
+                </button>
+                <p class="cta-note">✓ Free forever plan available  ✓ Upgrade anytime  ✓ Cancel anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="logo.png" alt="FitAI Coach Logo" class="logo-image">
+                        <span>FitAI Coach</span>
+                    </div>
+                    <p class="footer-desc">Your AI-powered personal fitness coach for Malaysia and Southeast Asia.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul class="footer-links">
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FitAI Coach. All rights reserved. Made with ❤️ in Malaysia 🇲🇾</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-dialog">
             <div class="modal-content">
-                <span class="modal-close" onclick="closeSubscription()">&times;</span>
-                <h2 data-en="Upgrade to Premium" data-bm="Naik Taraf ke Premium">Upgrade to Premium</h2>
-                <p class="modal-subtitle" data-en="Unlock unlimited AI-powered fitness coaching" data-bm="Buka kunci bimbingan kecergasan berkuasa AI tanpa had">Unlock unlimited AI-powered fitness coaching</p>
+                <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+                <h2>Welcome Back!</h2>
+                <p class="modal-subtitle">Login to continue your fitness journey</p>
                 
-                <div class="pricing-cards">
-                    <div class="pricing-card">
-                        <h3 data-en="Free" data-bm="Percuma">Free</h3>
-                        <div class="price">
-                            <span class="price-amount">RM0</span>
-                            <span class="price-period" data-en="/month" data-bm="/bulan">/month</span>
-                        </div>
-                        <ul class="features-list">
-                            <li>✓ <span data-en="1 workout plan per week" data-bm="1 pelan senaman seminggu">1 workout plan per week</span></li>
-                            <li>✓ <span data-en="Basic nutrition tips" data-bm="Tip pemakanan asas">Basic nutrition tips</span></li>
-                            <li>✓ <span data-en="Limited AI chat" data-bm="Sembang AI terhad">Limited AI chat</span></li>
-                            <li>✓ <span data-en="Basic progress tracking" data-bm="Penjejakan kemajuan asas">Basic progress tracking</span></li>
-                        </ul>
-                        <button class="btn-secondary" disabled data-en="Current Plan" data-bm="Pelan Semasa">Current Plan</button>
+                <form class="auth-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="login-email" placeholder="your@email.com" required>
                     </div>
-                    
-                    <div class="pricing-card featured">
-                        <div class="featured-badge" data-en="Most Popular" data-bm="Paling Popular">Most Popular</div>
-                        <h3 data-en="Premium" data-bm="Premium">Premium</h3>
-                        <div class="price">
-                            <span class="price-amount">RM29</span>
-                            <span class="price-period" data-en="/month" data-bm="/bulan">/month</span>
-                        </div>
-                        <ul class="features-list">
-                            <li>✓ <span data-en="Unlimited workout plans" data-bm="Pelan senaman tanpa had">Unlimited workout plans</span></li>
-                            <li>✓ <span data-en="Personalized meal plans" data-bm="Pelan makanan diperibadikan">Personalized meal plans</span></li>
-                            <li>✓ <span data-en="Unlimited AI coach chat" data-bm="Sembang jurulatih AI tanpa had">Unlimited AI coach chat</span></li>
-                            <li>✓ <span data-en="Advanced progress tracking" data-bm="Penjejakan kemajuan lanjutan">Advanced progress tracking</span></li>
-                            <li>✓ <span data-en="Exercise demo images" data-bm="Imej demo senaman">Exercise demo images</span></li>
-                            <li>✓ <span data-en="Priority support" data-bm="Sokongan keutamaan">Priority support</span></li>
-                        </ul>
-                        <button class="btn-primary" onclick="subscribePremium()" data-en="Upgrade Now" data-bm="Naik Taraf Sekarang">Upgrade Now</button>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
                     </div>
+                    <button type="submit" class="btn-modal-primary">Login</button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
                 </div>
+
+                <button class="btn-social google" onclick="loginWithGoogle()">
+                    <span class="social-icon">G</span>
+                    Continue with Google
+                </button>
+
+                <p class="modal-footer-text">
+                    Don't have an account? 
+                    <a href="#" onclick="switchToSignup()">Sign up free</a>
+                </p>
             </div>
         </div>
+    </div>
 
-        <!-- Loading Overlay -->
-        <div id="loading-overlay" class="loading-overlay">
-            <div class="loading-spinner"></div>
-            <p id="loading-text" data-en="Generating your personalized plan..." data-bm="Menjana pelan diperibadikan anda...">Generating your personalized plan...</p>
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeSignupModal()">&times;</button>
+                <h2>Start Your Free Journey</h2>
+                <p class="modal-subtitle">Create your account in seconds</p>
+                
+                <form class="auth-form" onsubmit="handleSignup(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="signup-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="signup-email" placeholder="your@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" id="signup-password" placeholder="Create a password (min 6 characters)" required minlength="6">
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <label for="terms">I agree to the <a href="terms-and-conditions.html" target="_blank" style="color: var(--primary-color);">Terms & Conditions</a> and <a href="privacy-policy.html" target="_blank" style="color: var(--primary-color);">Privacy Policy</a></label>
+                    </div>
+                    <button type="submit" class="btn-modal-primary">Create Free Account</button>
+                </form>
+
+                <div class="divider">
+                    <span>OR</span>
+                </div>
+
+                <button class="btn-social google" onclick="signupWithGoogle()">
+                    <span class="social-icon">G</span>
+                    Continue with Google
+                </button>
+
+                <p class="modal-footer-text">
+                    Already have an account? 
+                    <a href="#" onclick="switchToLogin()">Login</a>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -549,7 +507,10 @@
     <script src="firebase-auth.js"></script>
     <script src="firebase-database.js"></script>
     
-    <!-- Main App Script -->
-    <script src="app.js"></script>
+    <!-- Translations -->
+    <script src="landing-translations.js"></script>
+    
+    <!-- Landing Page Script -->
+    <script src="landing-script.js"></script>
 </body>
 </html>

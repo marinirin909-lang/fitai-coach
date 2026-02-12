@@ -54,7 +54,7 @@ async function handleLogin(event) {
     
     if (result.success) {
         // Redirect to main app
-        window.location.href = 'index.html';
+        window.location.href = 'app.html';
     } else {
         alert('Login failed: ' + (result.error || 'Please check your credentials'));
         if (loginBtn) {
@@ -104,7 +104,7 @@ async function handleSignup(event) {
         alert('Account created successfully! Welcome to FitAI Coach 🎉');
         
         // Redirect to main app
-        window.location.href = 'index.html';
+        window.location.href = 'app.html';
     } else {
         alert('Signup failed: ' + (result.error || 'Please try again'));
         if (signupBtn) {
@@ -118,7 +118,7 @@ async function handleSignup(event) {
 async function loginWithGoogle() {
     const result = await signInWithGoogle();
     if (result.success) {
-        window.location.href = 'index.html';
+        window.location.href = 'app.html';
     } else {
         alert('Google Sign-In failed: ' + (result.error || 'Please try again'));
     }
@@ -128,7 +128,7 @@ async function signupWithGoogle() {
     const result = await signInWithGoogle();
     if (result.success) {
         alert('Welcome to FitAI Coach! 🎉');
-        window.location.href = 'index.html';
+        window.location.href = 'app.html';
     } else {
         alert('Google Sign-Up failed: ' + (result.error || 'Please try again'));
     }
@@ -220,14 +220,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (loginBtn) {
                     loginBtn.textContent = 'Dashboard';
                     loginBtn.onclick = function() {
-                        window.location.href = 'index.html';
+                        window.location.href = 'app.html';
                     };
                 }
                 
                 if (signupBtn) {
                     signupBtn.textContent = 'Go to App';
                     signupBtn.onclick = function() {
-                        window.location.href = 'index.html';
+                        window.location.href = 'app.html';
                     };
                 }
             }
@@ -249,14 +249,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (loginBtn) {
                         loginBtn.textContent = 'Dashboard';
                         loginBtn.onclick = function() {
-                            window.location.href = 'index.html';
+                            window.location.href = 'app.html';
                         };
                     }
                     
                     if (signupBtn) {
                         signupBtn.textContent = 'Go to App';
                         signupBtn.onclick = function() {
-                            window.location.href = 'index.html';
+                            window.location.href = 'app.html';
                         };
                     }
                 }

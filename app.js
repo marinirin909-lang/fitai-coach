@@ -131,105 +131,155 @@ function validateCurrentStep(step) {
 }
 
 async function completeOnboarding() {
-    const currentStep = document.querySelector('.onboarding-step.active');
-    if (!validateCurrentStep(currentStep)) return;
-    
-    userData = {
-        name: document.getElementById('user-name').value,
-        age: parseInt(document.getElementById('user-age').value),
-        gender: document.getElementById('user-gender').value,
-        height: parseInt(document.getElementById('user-height').value),
-        weight: parseFloat(document.getElementById('user-weight').value),
-        activityLevel: document.getElementById('activity-level').value,
-        fitnessLevel: document.getElementById('fitness-level').value,
-        goal: document.getElementById('user-goal').value,
-        dietPreference: document.getElementById('diet-preference').value
-    };
-    
-    const user = getCurrentUser();
-    
-    if (user && user.uid) {
-        // Save to Firebase
-        await saveUserProfile(user.uid, userData);
-    } else {
-        // Fallback to localStorage
+    try {
+        const currentStep = document.querySelector('.onboarding-step.active');
+        if (!validateCurrentStep(currentStep)) {
+            return;
+        }
+        
+        userData = {
+            name: document.getElementById('user-name').value,
+            age: parseInt(document.getElementById('user-age').value),
+            gender: document.getElementById('user-gender').value,
+            height: parseInt(document.getElementById('user-height').value),
+            weight: parseFloat(document.getElementById('user-weight').value),
+            activityLevel: document.getElementById('activity-level').value,
+            fitnessLevel: document.getElementById('fitness-level').value,
+            goal: document.getElementById('user-goal').value,
+            dietPreference: document.getElementById('diet-preference').value
+        };
+        
+        // Always save to localStorage first (guaranteed to work)
         localStorage.setItem('userData', JSON.stringify(userData));
+        
+        // Try Firebase save in background (don't block)
+        try {
+            const user = getCurrentUser();
+            if (user && user.uid) {
+                saveUserProfile(user.uid, userData).catch(function(err) {
+                    console.warn('Firebase save failed, using localStorage:', err);
+                });
+            }
+        } catch (fbError) {
+            console.warn('Firebase not available, using localStorage:', fbError);
+        }
+        
+        // Switch screens
+        document.getElementById('welcome-screen').classList.remove('active');
+        document.getElementById('dashboard-screen').classList.add('active');
+        
+        // Initialize dashboard
+        initializeDashboard();
+        
+    } catch (error) {
+        console.error('Error in completeOnboarding:', error);
+        // Last resort - force switch to dashboard even if something failed
+        localStorage.setItem('userData', JSON.stringify(userData));
+        document.getElementById('welcome-screen').classList.remove('active');
+        document.getElementById('dashboard-screen').classList.add('active');
+        initializeDashboard();
     }
-    
-    document.getElementById('welcome-screen').classList.remove('active');
-    document.getElementById('dashboard-screen').classList.add('active');
-    await initializeDashboard();
-    updateLanguage();
 }
 
 async function logout() {
     if (confirm(currentLanguage === 'en' ? 'Are you sure you want to logout?' : 'Adakah anda pasti mahu log keluar?')) {
         await firebaseLogout();
         localStorage.removeItem('userSession');
-        window.location.href = 'landing.html';
+        window.location.href = 'index.html';
     }
 }
 
-async function initializeDashboard() {
-    const user = getCurrentUser();
-    
-    if (user && user.uid) {
-        // Firebase user
-        const profile = await loadUserProfile(user.uid);
-        if (profile && profile.name) {
-            userData.name = profile.name;
-        } else if (user.displayName) {
-            userData.name = user.displayName;
+function initializeDashboard() {
+    try {
+        // Set user name display
+        const userNameDisplay = document.getElementById('user-name-display');
+        if (userNameDisplay) {
+            userNameDisplay.textContent = userData.name || 'User';
         }
         
-        document.getElementById('user-name-display').textContent = userData.name || 'User';
-        
+        // Set email display
         const emailDisplay = document.getElementById('logged-in-email');
         if (emailDisplay) {
-            emailDisplay.textContent = user.email || userData.email || 'Not set';
-        }
-    } else {
-        // LocalStorage fallback
-        document.getElementById('user-name-display').textContent = userData.name;
-        
-        const userSession = localStorage.getItem('userSession');
-        if (userSession) {
-            const session = JSON.parse(userSession);
-            const emailDisplay = document.getElementById('logged-in-email');
-            if (emailDisplay) {
-                emailDisplay.textContent = session.email || userData.email || 'Not set';
+            const userSession = localStorage.getItem('userSession');
+            let email = 'Not set';
+            if (userSession) {
+                try { email = JSON.parse(userSession).email || email; } catch(e) {}
             }
+            emailDisplay.textContent = email;
         }
+        
+        const goalText = {
+            'lose-weight': currentLanguage === 'en' ? 'Lose Weight' : 'Kurangkan Berat',
+            'build-muscle': currentLanguage === 'en' ? 'Build Muscle' : 'Bina Otot',
+            'get-fit': currentLanguage === 'en' ? 'Get Fit & Healthy' : 'Jadi Cergas & Sihat',
+            'flexibility': currentLanguage === 'en' ? 'Improve Flexibility' : 'Tingkatkan Fleksibiliti',
+            'endurance': currentLanguage === 'en' ? 'Build Endurance' : 'Bina Daya Tahan'
+        };
+        
+        const userGoalDisplay = document.getElementById('user-goal-display');
+        if (userGoalDisplay) {
+            userGoalDisplay.textContent = goalText[userData.goal] || 'Get Fit';
+        }
+        
+        const userWeightDisplay = document.getElementById('user-weight-display');
+        if (userWeightDisplay) {
+            userWeightDisplay.textContent = `${userData.weight || 0} kg`;
+        }
+        
+        const bmr = calculateBMR();
+        
+        const userBmrDisplay = document.getElementById('user-bmr-display');
+        if (userBmrDisplay) {
+            userBmrDisplay.textContent = Math.round(bmr) || 0;
+        }
+        
+        const calorieTarget = document.getElementById('calorie-target');
+        if (calorieTarget) {
+            calorieTarget.textContent = Math.round(bmr) || 0;
+        }
+        
+        const macros = calculateMacros(bmr);
+        
+        const proteinTarget = document.getElementById('protein-target');
+        if (proteinTarget) {
+            proteinTarget.textContent = `${macros.protein}g`;
+        }
+        
+        const carbsTarget = document.getElementById('carbs-target');
+        if (carbsTarget) {
+            carbsTarget.textContent = `${macros.carbs}g`;
+        }
+        
+        const fatsTarget = document.getElementById('fats-target');
+        if (fatsTarget) {
+            fatsTarget.textContent = `${macros.fats}g`;
+        }
+        
+        const workoutStreak = document.getElementById('workout-streak');
+        if (workoutStreak) {
+            workoutStreak.textContent = progressData.streak || 0;
+        }
+        
+        const quotes = motivationalQuotes[currentLanguage] || motivationalQuotes['en'];
+        const quote = quotes[Math.floor(Math.random() * quotes.length)];
+        const dailyQuote = document.getElementById('daily-quote');
+        if (dailyQuote) {
+            dailyQuote.textContent = `"${quote}"`;
+        }
+        
+        const settingsName = document.getElementById('settings-name');
+        if (settingsName) {
+            settingsName.value = userData.name || '';
+        }
+        
+        try {
+            initializeWeightChart();
+        } catch (chartError) {
+            console.warn('Chart initialization failed:', chartError);
+        }
+    } catch (error) {
+        console.error('Dashboard initialization error:', error);
     }
-    
-    const goalText = {
-        'lose-weight': currentLanguage === 'en' ? 'Lose Weight' : 'Kurangkan Berat',
-        'build-muscle': currentLanguage === 'en' ? 'Build Muscle' : 'Bina Otot',
-        'get-fit': currentLanguage === 'en' ? 'Get Fit & Healthy' : 'Jadi Cergas & Sihat',
-        'flexibility': currentLanguage === 'en' ? 'Improve Flexibility' : 'Tingkatkan Fleksibiliti',
-        'endurance': currentLanguage === 'en' ? 'Build Endurance' : 'Bina Daya Tahan'
-    };
-    document.getElementById('user-goal-display').textContent = goalText[userData.goal];
-    
-    document.getElementById('user-weight-display').textContent = `${userData.weight} kg`;
-    
-    const bmr = calculateBMR();
-    document.getElementById('user-bmr-display').textContent = Math.round(bmr);
-    document.getElementById('calorie-target').textContent = Math.round(bmr);
-    
-    const macros = calculateMacros(bmr);
-    document.getElementById('protein-target').textContent = `${macros.protein}g`;
-    document.getElementById('carbs-target').textContent = `${macros.carbs}g`;
-    document.getElementById('fats-target').textContent = `${macros.fats}g`;
-    
-    document.getElementById('workout-streak').textContent = progressData.streak;
-    
-    const quote = motivationalQuotes[currentLanguage][Math.floor(Math.random() * motivationalQuotes[currentLanguage].length)];
-    document.getElementById('daily-quote').textContent = `"${quote}"`;
-    
-    document.getElementById('settings-name').value = userData.name;
-    
-    initializeWeightChart();
 }
 
 function calculateBMR() {
@@ -248,7 +298,7 @@ function calculateBMR() {
         'extra': 1.9
     };
     
-    bmr *= activityMultipliers[userData.activity];
+    bmr *= activityMultipliers[userData.activityLevel] || activityMultipliers[userData.activity] || 1.2;
     
     if (userData.goal === 'lose-weight') {
         bmr *= 0.85;
@@ -826,72 +876,15 @@ function hideLoading() {
     document.getElementById('loading-overlay').classList.remove('active');
 }
 
-document.addEventListener('DOMContentLoaded', async () => {
-    // Initialize Firebase
-    initializeFirebase();
-    
-    // Check authentication
-    onAuthStateChanged(async function(user) {
-        if (!user) {
-            // Check localStorage fallback
-            const userSession = localStorage.getItem('userSession');
-            if (!userSession) {
-                window.location.href = 'landing.html';
-                return;
-            }
-            
-            try {
-                const session = JSON.parse(userSession);
-                if (!session.isLoggedIn) {
-                    window.location.href = 'landing.html';
-                    return;
-                }
-            } catch (error) {
-                console.error('Invalid session:', error);
-                window.location.href = 'landing.html';
-                return;
-            }
-        } else {
-            // User is authenticated with Firebase
-            // Load user data from Firestore
-            const profile = await loadUserProfile(user.uid);
-            if (profile) {
-                userData = profile;
-            }
-            
-            // Load progress data
-            const progress = await loadProgressData(user.uid);
-            if (progress) {
-                progressData = progress;
-            }
-            
-            // Load workout plan
-            const plan = await loadWorkoutPlan(user.uid);
-            if (plan) {
-                workoutPlan = plan;
-            }
-        }
-    });
-    
+document.addEventListener('DOMContentLoaded', () => {
+    // Quick synchronous setup first (non-blocking)
     const savedLanguage = localStorage.getItem('language') || 'en';
     const savedTheme = localStorage.getItem('theme') || 'light';
-    const savedUserData = localStorage.getItem('userData');
-    const savedProgressData = localStorage.getItem('progressData');
     
     currentLanguage = savedLanguage;
     setTheme(savedTheme);
     
-    if (savedUserData) {
-        userData = JSON.parse(savedUserData);
-        document.getElementById('welcome-screen').classList.remove('active');
-        document.getElementById('dashboard-screen').classList.add('active');
-        initializeDashboard();
-    }
-    
-    if (savedProgressData) {
-        progressData = JSON.parse(savedProgressData);
-    }
-    
+    // Setup event listeners (lightweight)
     const chatInput = document.getElementById('chat-input');
     if (chatInput) {
         chatInput.addEventListener('keypress', (e) => {
@@ -907,4 +900,76 @@ document.addEventListener('DOMContentLoaded', async () => {
             closeSubscription();
         }
     };
+    
+    // Defer heavy operations to next tick (non-blocking)
+    setTimeout(() => {
+        initializeApp();
+    }, 0);
 });
+
+// Separate async initialization function
+async function initializeApp() {
+    // Initialize Firebase
+    initializeFirebase();
+    
+    // Check if user already has saved data - skip auth check, go to dashboard
+    const savedUserData = localStorage.getItem('userData');
+    const savedProgressData = localStorage.getItem('progressData');
+    
+    if (savedUserData) {
+        try {
+            userData = JSON.parse(savedUserData);
+            document.getElementById('welcome-screen').classList.remove('active');
+            document.getElementById('dashboard-screen').classList.add('active');
+            initializeDashboard();
+        } catch (e) {
+            console.error('Error loading saved user data:', e);
+        }
+    }
+    
+    if (savedProgressData) {
+        try {
+            progressData = JSON.parse(savedProgressData);
+        } catch (e) {
+            console.error('Error loading saved progress data:', e);
+        }
+    }
+    
+    // Check authentication in background (don't block UI)
+    try {
+        onAuthStateChanged(async function(user) {
+            if (user) {
+                // User is authenticated with Firebase - load data in background
+                try {
+                    const profile = await loadUserProfile(user.uid);
+                    if (profile) {
+                        userData = profile;
+                    }
+                } catch (e) {
+                    console.warn('Could not load profile from Firebase:', e);
+                }
+                
+                try {
+                    const progress = await loadProgressData(user.uid);
+                    if (progress) {
+                        progressData = progress;
+                    }
+                } catch (e) {
+                    console.warn('Could not load progress from Firebase:', e);
+                }
+                
+                try {
+                    const plan = await loadWorkoutPlan(user.uid);
+                    if (plan) {
+                        workoutPlan = plan;
+                    }
+                } catch (e) {
+                    console.warn('Could not load workout plan from Firebase:', e);
+                }
+            }
+            // Do NOT redirect to index.html - user may be on onboarding screen
+        });
+    } catch (e) {
+        console.warn('Auth state check failed:', e);
+    }
+}
