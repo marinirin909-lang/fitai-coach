@@ -248,16 +248,37 @@
                     <section id="workout-section" class="content-section">
                         <div class="section-header">
                             <h1 data-en="Workout Plan Generator" data-bm="Penjana Pelan Senaman">Workout Plan Generator</h1>
-                            <button class="btn-primary" onclick="generateWorkoutPlan()" id="generate-workout-btn" data-en="Generate New Plan" data-bm="Jana Pelan Baru">Generate New Plan</button>
+                            <button class="btn-primary" onclick="generateWorkoutPlan()" id="generate-workout-btn" data-en="Generate Plan" data-bm="Jana Pelan">Generate Plan</button>
+                        </div>
+
+                        <!-- Tier Info Banner -->
+                        <div id="workout-tier-banner" class="tier-banner">
+                            <div class="tier-banner-content">
+                                <span class="tier-badge free" id="workout-tier-badge">FREE</span>
+                                <span id="workout-tier-text" data-en="Basic exercises &amp; 7-day plans" data-bm="Senaman asas &amp; pelan 7 hari">Basic exercises & 7-day plans</span>
+                            </div>
+                            <button class="btn-upgrade-sm" onclick="showSubscription()" id="workout-upgrade-btn" data-en="Unlock Premium" data-bm="Buka Premium">Unlock Premium</button>
                         </div>
 
                         <div class="plan-options">
                             <div class="form-group">
+                                <label data-en="Workout Split" data-bm="Split Senaman">Workout Split</label>
+                                <select id="plan-split">
+                                    <option value="full-body" data-en="Full Body" data-bm="Seluruh Badan">Full Body</option>
+                                    <option value="upper-lower" data-en="Upper / Lower ⭐ Premium" data-bm="Atas / Bawah ⭐ Premium">Upper / Lower ⭐ Premium</option>
+                                    <option value="push-pull-legs" data-en="Push / Pull / Legs ⭐ Premium" data-bm="Tolak / Tarik / Kaki ⭐ Premium">Push / Pull / Legs ⭐ Premium</option>
+                                    <option value="bro-split" data-en="5-Day Split ⭐ Premium" data-bm="Split 5 Hari ⭐ Premium">5-Day Split ⭐ Premium</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label data-en="Plan Duration" data-bm="Tempoh Pelan">Plan Duration</label>
                                 <select id="plan-duration">
                                     <option value="7">7 Days</option>
-                                    <option value="14">14 Days (Premium)</option>
-                                    <option value="30">30 Days (Premium)</option>
+                                    <option value="14">14 Days ⭐ Premium</option>
+                                    <option value="21">21 Days ⭐ Premium</option>
+                                    <option value="30">30 Days ⭐ Premium</option>
+                                    <option value="60">60 Days ⭐ Premium</option>
+                                    <option value="90">90 Days ⭐ Premium</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -270,11 +291,17 @@
                             </div>
                         </div>
 
+                        <!-- Premium Features List -->
+                        <div id="premium-features-hint" class="premium-features-hint">
+                            <span>⭐</span>
+                            <span data-en="Premium unlocks: Advanced splits, 90-day plans, exercise progression, deload weeks, mobility workouts, 80+ exercises" data-bm="Premium membuka: Split lanjutan, pelan 90 hari, progresi senaman, minggu deload, senaman mobiliti, 80+ senaman">Premium unlocks: Advanced splits, 90-day plans, exercise progression, deload weeks, mobility workouts, 80+ exercises</span>
+                        </div>
+
                         <div id="workout-plan-container" class="workout-plan">
                             <div class="empty-state">
                                 <div class="empty-icon">💪</div>
                                 <h3 data-en="No workout plan yet" data-bm="Belum ada pelan senaman">No workout plan yet</h3>
-                                <p data-en="Click 'Generate New Plan' to create your personalized workout plan" data-bm="Klik 'Jana Pelan Baru' untuk cipta pelan senaman diperibadikan anda">Click 'Generate New Plan' to create your personalized workout plan</p>
+                                <p data-en="Select your options above and click 'Generate Plan' to create your personalized workout" data-bm="Pilih pilihan di atas dan klik 'Jana Pelan' untuk cipta senaman diperibadikan anda">Select your options above and click 'Generate Plan' to create your personalized workout</p>
                             </div>
                         </div>
                     </section>
@@ -471,6 +498,7 @@
                                 </div>
                                 <p data-en="Upgrade to Premium for unlimited features" data-bm="Naik taraf ke Premium untuk ciri tanpa had">Upgrade to Premium for unlimited features</p>
                                 <button class="btn-primary" onclick="showSubscription()" data-en="View Plans" data-bm="Lihat Pelan">View Plans</button>
+                                <button class="btn-secondary" id="manage-subscription-btn" onclick="openCustomerPortal()" style="display:none; margin-top:8px;" data-en="Manage Subscription" data-bm="Urus Langganan">Manage Subscription</button>
                             </div>
                         </div>
 
@@ -530,6 +558,17 @@
             </div>
         </div>
 
+        <!-- Payment Success Modal -->
+        <div id="payment-success-modal" class="modal">
+            <div class="modal-content" style="text-align:center;">
+                <span class="modal-close" onclick="closePaymentSuccessModal()">&times;</span>
+                <div style="font-size:3rem;margin-bottom:16px;">🎉</div>
+                <h2 data-en="Welcome to Premium!" data-bm="Selamat Datang ke Premium!">Welcome to Premium!</h2>
+                <p class="modal-subtitle" data-en="You now have access to all premium features including unlimited workout plans, personalized meal plans, and unlimited AI coach chat." data-bm="Anda kini mempunyai akses kepada semua ciri premium termasuk pelan senaman tanpa had, pelan makanan diperibadikan, dan sembang jurulatih AI tanpa had.">You now have access to all premium features including unlimited workout plans, personalized meal plans, and unlimited AI coach chat.</p>
+                <button class="btn-primary" onclick="closePaymentSuccessModal()" style="margin-top:20px;" data-en="Start Exploring" data-bm="Mula Meneroka">Start Exploring</button>
+            </div>
+        </div>
+
         <!-- Loading Overlay -->
         <div id="loading-overlay" class="loading-overlay">
             <div class="loading-spinner"></div>
@@ -537,6 +576,9 @@
         </div>
     </div>
 
+    <!-- Stripe.js SDK -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
@@ -548,6 +590,12 @@
     <script src="firebase-config.js"></script>
     <script src="firebase-auth.js"></script>
     <script src="firebase-database.js"></script>
+    
+    <!-- Workout Database -->
+    <script src="workout-database.js"></script>
+    
+    <!-- Stripe Payment Integration -->
+    <script src="stripe-payment.js"></script>
     
     <!-- Main App Script -->
     <script src="app.js"></script>

@@ -277,6 +277,24 @@ function initializeDashboard() {
         } catch (chartError) {
             console.warn('Chart initialization failed:', chartError);
         }
+        
+        // Update tier banner
+        try {
+            updateTierBanner();
+        } catch (tierError) {
+            console.warn('Tier banner update failed:', tierError);
+        }
+        
+        // Load saved workout plan if exists
+        try {
+            const savedPlan = localStorage.getItem('workoutPlan');
+            if (savedPlan && !workoutPlan) {
+                workoutPlan = JSON.parse(savedPlan);
+                displayWorkoutPlan(workoutPlan);
+            }
+        } catch (planError) {
+            console.warn('Could not load saved workout plan:', planError);
+        }
     } catch (error) {
         console.error('Dashboard initialization error:', error);
     }
@@ -346,135 +364,192 @@ function showSection(sectionName) {
 }
 
 async function generateWorkoutPlan() {
-    if (!isPremium() && workoutDuration > 7) {
-        alert(currentLanguage === 'en' ? 'Premium subscription required for plans longer than 7 days!' : 'Langganan Premium diperlukan untuk pelan lebih dari 7 hari!');
-        showSubscription();
-        return;
+    const duration = parseInt(document.getElementById('plan-duration').value);
+    const equipment = document.getElementById('plan-equipment').value;
+    const splitEl = document.getElementById('plan-split');
+    const split = splitEl ? splitEl.value : 'full-body';
+    const tier = isPremium() ? 'premium' : 'free';
+    
+    // Free tier restrictions
+    if (!isPremium()) {
+        if (duration > 7) {
+            alert(currentLanguage === 'en' ? 
+                'Premium subscription required for plans longer than 7 days! Free plan includes 7-day plans only.' : 
+                'Langganan Premium diperlukan untuk pelan lebih dari 7 hari! Pelan percuma termasuk pelan 7 hari sahaja.');
+            showSubscription();
+            return;
+        }
+        if (split !== 'full-body') {
+            alert(currentLanguage === 'en' ? 
+                'Premium subscription required for advanced workout splits! Free plan includes Full Body split only.' : 
+                'Langganan Premium diperlukan untuk split senaman lanjutan! Pelan percuma termasuk split Seluruh Badan sahaja.');
+            showSubscription();
+            document.getElementById('plan-split').value = 'full-body';
+            return;
+        }
     }
     
     const user = getCurrentUser();
     
     showLoading(currentLanguage === 'en' ? 'Generating your personalized workout plan...' : 'Menjana pelan senaman diperibadikan anda...');
     
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1500));
     
-    const duration = parseInt(document.getElementById('plan-duration').value);
-    const equipment = document.getElementById('plan-equipment').value;
-    
-    workoutPlan = generateWorkoutPlanData(duration, equipment);
-    
-    if (user && user.uid) {
-        await saveWorkoutPlan(user.uid, workoutPlan);
-    } else {
-        localStorage.setItem('workoutPlan', JSON.stringify(workoutPlan));
+    try {
+        // Use WorkoutDB to generate the plan
+        const fitnessLevel = userData.fitnessLevel || userData.level || 'beginner';
+        const goal = userData.goal || 'get-fit';
+        
+        workoutPlan = WorkoutDB.generatePlan({
+            duration: duration,
+            equipment: equipment,
+            split: split,
+            fitnessLevel: fitnessLevel,
+            goal: goal,
+            tier: tier
+        });
+        
+        // Save plan
+        try {
+            if (user && user.uid) {
+                await saveWorkoutPlan(user.uid, workoutPlan);
+            } else {
+                localStorage.setItem('workoutPlan', JSON.stringify(workoutPlan));
+            }
+        } catch (saveErr) {
+            console.warn('Could not save workout plan:', saveErr);
+            localStorage.setItem('workoutPlan', JSON.stringify(workoutPlan));
+        }
+        
+        displayWorkoutPlan(workoutPlan);
+    } catch (err) {
+        console.error('Error generating workout plan:', err);
+        alert(currentLanguage === 'en' ? 'Error generating plan. Please try again.' : 'Ralat menjana pelan. Sila cuba lagi.');
     }
-    
-    displayWorkoutPlan(workoutPlan);
     
     hideLoading();
 }
 
-function generateWorkoutPlanData(duration, equipment) {
-    const exercises = {
-        none: {
-            strength: ['Push-ups', 'Squats', 'Lunges', 'Plank', 'Mountain Climbers', 'Burpees', 'Jumping Jacks', 'High Knees'],
-            cardio: ['Running in place', 'Jump rope', 'High knees', 'Burpees', 'Mountain climbers'],
-            flexibility: ['Yoga stretches', 'Dynamic stretches', 'Leg swings', 'Arm circles']
-        },
-        basic: {
-            strength: ['Dumbbell curls', 'Shoulder press', 'Goblet squats', 'Dumbbell rows', 'Chest press', 'Tricep extensions'],
-            cardio: ['Jump rope', 'Resistance band cardio', 'Kettlebell swings'],
-            flexibility: ['Resistance band stretches', 'Yoga with bands']
-        },
-        gym: {
-            strength: ['Bench press', 'Deadlifts', 'Squats', 'Pull-ups', 'Lat pulldowns', 'Leg press', 'Cable rows'],
-            cardio: ['Treadmill', 'Elliptical', 'Rowing machine', 'Stair climber'],
-            flexibility: ['Foam rolling', 'Stretching machines', 'Yoga']
-        }
-    };
-    
-    const plan = [];
-    const equipmentExercises = exercises[equipment];
-    
-    for (let day = 1; day <= duration; day++) {
-        const dayPlan = {
-            day: day,
-            name: `Day ${day}`,
-            focus: day % 3 === 1 ? 'Strength' : day % 3 === 2 ? 'Cardio' : 'Flexibility',
-            exercises: []
-        };
-        
-        const focusType = dayPlan.focus.toLowerCase();
-        const exercisePool = equipmentExercises[focusType] || equipmentExercises.strength;
-        
-        const numExercises = userData.level === 'beginner' ? 4 : userData.level === 'intermediate' ? 6 : 8;
-        
-        for (let i = 0; i < numExercises; i++) {
-            const exercise = exercisePool[i % exercisePool.length];
-            const sets = userData.level === 'beginner' ? 3 : userData.level === 'intermediate' ? 4 : 5;
-            const reps = focusType === 'cardio' ? '30-60 sec' : userData.level === 'beginner' ? '8-10' : userData.level === 'intermediate' ? '10-12' : '12-15';
-            
-            dayPlan.exercises.push({
-                name: exercise,
-                sets: sets,
-                reps: reps,
-                rest: '60 sec'
-            });
-        }
-        
-        plan.push(dayPlan);
-    }
-    
-    return plan;
-}
-
 function displayWorkoutPlan(plan) {
     const container = document.getElementById('workout-plan-container');
+    if (!container) return;
     container.innerHTML = '';
+    
+    const tier = isPremium() ? 'premium' : 'free';
+    const freeExCount = WorkoutDB.getExerciseCount('free');
+    const premiumExCount = WorkoutDB.getExerciseCount('premium');
+    
+    // Plan summary header
+    const summaryDiv = document.createElement('div');
+    summaryDiv.className = 'plan-summary';
+    const workoutDays = plan.filter(d => !d.isRest).length;
+    const restDays = plan.filter(d => d.isRest).length;
+    const hasDeload = plan.some(d => d.isDeload);
+    summaryDiv.innerHTML = `
+        <div class="plan-summary-stats">
+            <div class="plan-stat">
+                <span class="plan-stat-value">${plan.length}</span>
+                <span class="plan-stat-label">${currentLanguage === 'en' ? 'Total Days' : 'Jumlah Hari'}</span>
+            </div>
+            <div class="plan-stat">
+                <span class="plan-stat-value">${workoutDays}</span>
+                <span class="plan-stat-label">${currentLanguage === 'en' ? 'Workout Days' : 'Hari Senaman'}</span>
+            </div>
+            <div class="plan-stat">
+                <span class="plan-stat-value">${restDays}</span>
+                <span class="plan-stat-label">${currentLanguage === 'en' ? 'Rest Days' : 'Hari Rehat'}</span>
+            </div>
+            ${hasDeload ? `<div class="plan-stat"><span class="plan-stat-value">✓</span><span class="plan-stat-label">${currentLanguage === 'en' ? 'Deload Weeks' : 'Minggu Deload'}</span></div>` : ''}
+        </div>
+        <div class="plan-exercise-count">
+            ${currentLanguage === 'en' ? 'Using' : 'Menggunakan'} <strong>${tier === 'premium' ? premiumExCount : freeExCount}</strong> ${currentLanguage === 'en' ? 'exercises from database' : 'senaman dari pangkalan data'}
+            ${tier === 'free' ? `<span class="upgrade-hint" onclick="showSubscription()"> — ${currentLanguage === 'en' ? `Upgrade for ${premiumExCount}+ exercises` : `Naik taraf untuk ${premiumExCount}+ senaman`} ⭐</span>` : ''}
+        </div>
+    `;
+    container.appendChild(summaryDiv);
     
     plan.forEach(day => {
         const dayCard = document.createElement('div');
-        dayCard.className = 'day-card';
+        dayCard.className = 'day-card' + (day.isRest ? ' rest-day' : '') + (day.isDeload ? ' deload-day' : '');
+        
+        const dayLabel = currentLanguage === 'en' ? 'Day' : 'Hari';
+        const deloadLabel = day.isDeload ? ` <span class="deload-badge">${currentLanguage === 'en' ? 'DELOAD' : 'DELOAD'}</span>` : '';
+        const restLabel = day.isRest && day.exercises.length === 0 ? ` — ${currentLanguage === 'en' ? 'Rest Day' : 'Hari Rehat'} 😴` : '';
+        const mobilityLabel = day.focusKey === 'mobility' ? ` — ${currentLanguage === 'en' ? 'Active Recovery' : 'Pemulihan Aktif'} 🧘` : '';
         
         const dayHeader = document.createElement('div');
         dayHeader.className = 'day-header';
         dayHeader.innerHTML = `
-            <div class="day-title">${currentLanguage === 'en' ? 'Day' : 'Hari'} ${day.day} - ${day.focus}</div>
+            <div class="day-title">${dayLabel} ${day.day} - ${day.focus}${deloadLabel}${restLabel}${mobilityLabel}</div>
         `;
         
-        const exerciseList = document.createElement('ul');
-        exerciseList.className = 'exercise-list';
-        
-        day.exercises.forEach(exercise => {
-            const li = document.createElement('li');
-            li.className = 'exercise-item';
-            li.innerHTML = `
-                <div class="exercise-name">${exercise.name}</div>
-                <div class="exercise-details">${exercise.sets} ${currentLanguage === 'en' ? 'sets' : 'set'} × ${exercise.reps} ${currentLanguage === 'en' ? 'reps' : 'ulangan'} | ${currentLanguage === 'en' ? 'Rest' : 'Rehat'}: ${exercise.rest}</div>
-            `;
-            exerciseList.appendChild(li);
-        });
-        
         dayCard.appendChild(dayHeader);
-        dayCard.appendChild(exerciseList);
+        
+        if (day.exercises.length > 0) {
+            const exerciseList = document.createElement('ul');
+            exerciseList.className = 'exercise-list';
+            
+            day.exercises.forEach(exercise => {
+                const li = document.createElement('li');
+                li.className = 'exercise-item';
+                const exName = exercise.name[currentLanguage] || exercise.name.en || exercise.name;
+                const setsLabel = currentLanguage === 'en' ? 'sets' : 'set';
+                const repsLabel = currentLanguage === 'en' ? 'reps' : 'ulangan';
+                const restLabel2 = currentLanguage === 'en' ? 'Rest' : 'Rehat';
+                const equipIcon = exercise.equipment === 'gym' ? '🏋️' : exercise.equipment === 'basic' ? '💪' : '🤸';
+                
+                li.innerHTML = `
+                    <div class="exercise-name">${equipIcon} ${exName}</div>
+                    <div class="exercise-details">${exercise.sets} ${setsLabel} × ${exercise.reps} ${repsLabel} | ${restLabel2}: ${exercise.rest}</div>
+                `;
+                exerciseList.appendChild(li);
+            });
+            
+            dayCard.appendChild(exerciseList);
+        }
+        
         container.appendChild(dayCard);
     });
     
+    // Update today's workout preview on home section
     const todayWorkout = document.getElementById('today-workout-content');
-    if (plan.length > 0) {
-        const today = plan[0];
+    if (todayWorkout && plan.length > 0) {
+        const today = plan.find(d => !d.isRest) || plan[0];
+        const previewExercises = today.exercises.slice(0, 3);
         todayWorkout.innerHTML = `
             <div class="day-title">${today.name} - ${today.focus}</div>
             <ul class="exercise-list">
-                ${today.exercises.slice(0, 3).map(ex => `
+                ${previewExercises.map(ex => {
+                    const exName = ex.name[currentLanguage] || ex.name.en || ex.name;
+                    return `
                     <li class="exercise-item">
-                        <div class="exercise-name">${ex.name}</div>
-                        <div class="exercise-details">${ex.sets} sets × ${ex.reps} reps</div>
-                    </li>
-                `).join('')}
+                        <div class="exercise-name">${exName}</div>
+                        <div class="exercise-details">${ex.sets} sets × ${ex.reps}</div>
+                    </li>`;
+                }).join('')}
             </ul>
-            <button class="btn-primary" onclick="showSection('workout')">${currentLanguage === 'en' ? 'View Full Plan' : 'Lihat Pelan Penuh'}</button>
+            ${today.exercises.length > 3 ? `<p style="color:var(--text-secondary);font-size:0.85rem;margin-top:8px;">+ ${today.exercises.length - 3} ${currentLanguage === 'en' ? 'more exercises' : 'lagi senaman'}</p>` : ''}
+            <button class="btn-primary" style="margin-top:16px;" onclick="showSection('workout')">${currentLanguage === 'en' ? 'View Full Plan' : 'Lihat Pelan Penuh'}</button>
         `;
+    }
+}
+
+function updateTierBanner() {
+    const badge = document.getElementById('workout-tier-badge');
+    const text = document.getElementById('workout-tier-text');
+    const upgradeBtn = document.getElementById('workout-upgrade-btn');
+    const hint = document.getElementById('premium-features-hint');
+    
+    if (isPremium()) {
+        if (badge) { badge.textContent = 'PREMIUM'; badge.className = 'tier-badge premium'; }
+        if (text) { text.textContent = currentLanguage === 'en' ? 'All exercises, splits & features unlocked' : 'Semua senaman, split & ciri dibuka'; }
+        if (upgradeBtn) { upgradeBtn.style.display = 'none'; }
+        if (hint) { hint.style.display = 'none'; }
+    } else {
+        if (badge) { badge.textContent = 'FREE'; badge.className = 'tier-badge free'; }
+        if (text) { text.textContent = currentLanguage === 'en' ? 'Basic exercises & 7-day plans' : 'Senaman asas & pelan 7 hari'; }
+        if (upgradeBtn) { upgradeBtn.style.display = ''; }
+        if (hint) { hint.style.display = ''; }
     }
 }
 
@@ -849,16 +924,15 @@ function closeSubscription() {
 }
 
 function subscribePremium() {
-    alert(currentLanguage === 'en' ? 
-        'Premium subscription coming soon! This will integrate with Stripe/RevenueCat for RM29/month.' : 
-        'Langganan Premium akan datang! Ini akan disepadukan dengan Stripe/RevenueCat untuk RM29/bulan.');
-    
-    localStorage.setItem('isPremium', 'true');
-    
-    document.getElementById('subscription-badge').innerHTML = '<span>Premium Plan</span>';
-    document.getElementById('subscription-badge').className = 'status-badge premium';
-    
-    closeSubscription();
+    // Use real Stripe Checkout
+    if (typeof startStripeCheckout === 'function') {
+        closeSubscription();
+        startStripeCheckout();
+    } else {
+        alert(currentLanguage === 'en' ? 
+            'Payment system is loading. Please try again.' : 
+            'Sistem pembayaran sedang dimuatkan. Sila cuba lagi.');
+    }
 }
 
 function isPremium() {
