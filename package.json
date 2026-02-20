@@ -1,0 +1,26 @@
+{
+  "name": "ai-personalized-fitness-coach",
+  "version": "1.0.0",
+  "description": "![FitAI Coach](https://img.shields.io/badge/Status-Ready%20to%20Use-success) ![Version](https://img.shields.io/badge/Version-1.0.0-blue) ![License](https://img.shields.io/badge/License-MIT-green)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marinirin909-lang/fitai-coach.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/marinirin909-lang/fitai-coach/issues"
+  },
+  "homepage": "https://github.com/marinirin909-lang/fitai-coach#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0"
+  }
+}

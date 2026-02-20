@@ -285,6 +285,20 @@ function initializeDashboard() {
             console.warn('Tier banner update failed:', tierError);
         }
         
+        // Update premium sections (new features)
+        try {
+            updatePremiumSections();
+        } catch (premError) {
+            console.warn('Premium sections update failed:', premError);
+        }
+        
+        // Initialize calendar
+        try {
+            initializeCalendar();
+        } catch (calError) {
+            console.warn('Calendar initialization failed:', calError);
+        }
+        
         // Load saved workout plan if exists
         try {
             const savedPlan = localStorage.getItem('workoutPlan');
@@ -924,9 +938,12 @@ function closeSubscription() {
 }
 
 function subscribePremium() {
-    // Use real Stripe Checkout
-    if (typeof startStripeCheckout === 'function') {
-        closeSubscription();
+    closeSubscription();
+
+    // Use RevenueCat on native Android, Stripe on web
+    if (typeof isNativeApp === 'function' && isNativeApp()) {
+        showRevenueCatPaywall();
+    } else if (typeof startStripeCheckout === 'function') {
         startStripeCheckout();
     } else {
         alert(currentLanguage === 'en' ? 
@@ -937,6 +954,96 @@ function subscribePremium() {
 
 function isPremium() {
     return localStorage.getItem('isPremium') === 'true';
+}
+
+// ============================================
+// Premium Feature Gating
+// ============================================
+function updatePremiumSections() {
+    var premium = isPremium();
+    var premiumSections = ['shopping-premium', 'career-premium', 'calendar-premium', 'community-premium'];
+
+    premiumSections.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+            if (premium) {
+                el.classList.add('unlocked');
+            } else {
+                el.classList.remove('unlocked');
+            }
+        }
+    });
+
+    // Update upgrade button in navbar
+    var upgradeBtn = document.querySelector('.btn-upgrade');
+    if (upgradeBtn) {
+        if (premium) {
+            upgradeBtn.textContent = currentLanguage === 'en' ? '⭐ Premium' : '⭐ Premium';
+            upgradeBtn.style.background = 'var(--gradient-primary)';
+            upgradeBtn.style.color = '#000';
+            upgradeBtn.onclick = null;
+        }
+    }
+}
+
+// ============================================
+// Calendar Functions
+// ============================================
+function initializeCalendar() {
+    var calendarBody = document.getElementById('calendar-body');
+    if (!calendarBody) return;
+
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var today = now.getDate();
+    var firstDay = new Date(year, month, 1).getDay();
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    // Adjust for Monday start (0=Mon, 6=Sun)
+    var startOffset = (firstDay + 6) % 7;
+
+    calendarBody.innerHTML = '';
+
+    // Empty cells before first day
+    for (var i = 0; i < startOffset; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'calendar-day';
+        calendarBody.appendChild(empty);
+    }
+
+    // Workout days (simulate some events)
+    var eventDays = [];
+    if (workoutPlan && workoutPlan.length > 0) {
+        for (var d = 0; d < Math.min(workoutPlan.length, daysInMonth); d++) {
+            if (!workoutPlan[d].isRest) {
+                eventDays.push(d + 1);
+            }
+        }
+    } else {
+        // Default events: Mon, Wed, Fri of current week
+        for (var d = 1; d <= daysInMonth; d++) {
+            var dayOfWeek = new Date(year, month, d).getDay();
+            if (dayOfWeek === 1 || dayOfWeek === 3 || dayOfWeek === 5) {
+                eventDays.push(d);
+            }
+        }
+    }
+
+    for (var day = 1; day <= daysInMonth; day++) {
+        var dayEl = document.createElement('div');
+        dayEl.className = 'calendar-day';
+        dayEl.textContent = day;
+
+        if (day === today) {
+            dayEl.classList.add('today');
+        }
+        if (eventDays.indexOf(day) !== -1) {
+            dayEl.classList.add('has-event');
+        }
+
+        calendarBody.appendChild(dayEl);
+    }
 }
 
 function showLoading(text) {

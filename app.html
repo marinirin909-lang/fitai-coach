@@ -175,6 +175,22 @@
                         <span class="menu-icon">📊</span>
                         <span data-en="Progress" data-bm="Kemajuan">Progress</span>
                     </div>
+                    <div class="menu-item" onclick="showSection('shopping')" data-section="shopping">
+                        <span class="menu-icon">🛒</span>
+                        <span data-en="Deals & Shopping" data-bm="Tawaran & Beli-belah">Deals & Shopping</span>
+                    </div>
+                    <div class="menu-item" onclick="showSection('career')" data-section="career">
+                        <span class="menu-icon">💼</span>
+                        <span data-en="Career" data-bm="Kerjaya">Career</span>
+                    </div>
+                    <div class="menu-item" onclick="showSection('calendar')" data-section="calendar">
+                        <span class="menu-icon">📅</span>
+                        <span data-en="Calendar" data-bm="Kalendar">Calendar</span>
+                    </div>
+                    <div class="menu-item" onclick="showSection('community')" data-section="community">
+                        <span class="menu-icon">👥</span>
+                        <span data-en="Community" data-bm="Komuniti">Community</span>
+                    </div>
                     <div class="menu-item" onclick="showSection('settings')" data-section="settings">
                         <span class="menu-icon">⚙️</span>
                         <span data-en="Settings" data-bm="Tetapan">Settings</span>
@@ -240,6 +256,18 @@
                             <button class="action-btn" onclick="showSection('chat')">
                                 <span class="action-icon">💬</span>
                                 <span data-en="Chat with Coach" data-bm="Sembang dengan Jurulatih">Chat with Coach</span>
+                            </button>
+                            <button class="action-btn" onclick="showSection('shopping')">
+                                <span class="action-icon">🛒</span>
+                                <span data-en="Deals & Offers" data-bm="Tawaran & Promosi">Deals & Offers</span>
+                            </button>
+                            <button class="action-btn" onclick="showSection('community')">
+                                <span class="action-icon">👥</span>
+                                <span data-en="Community" data-bm="Komuniti">Community</span>
+                            </button>
+                            <button class="action-btn" onclick="showSection('calendar')">
+                                <span class="action-icon">📅</span>
+                                <span data-en="My Schedule" data-bm="Jadual Saya">My Schedule</span>
                             </button>
                         </div>
                     </section>
@@ -429,6 +457,231 @@
                         </div>
                     </section>
 
+                    <!-- Shopping & Deals Section -->
+                    <section id="shopping-section" class="content-section">
+                        <div class="section-header">
+                            <h1 data-en="Deals & Shopping" data-bm="Tawaran & Beli-belah">Deals & Shopping</h1>
+                        </div>
+                        <p class="section-desc" data-en="AI-driven recommendations tailored to your fitness preferences." data-bm="Cadangan dipacu AI disesuaikan dengan keutamaan kecergasan anda.">AI-driven recommendations tailored to your fitness preferences.</p>
+
+                        <!-- Free: Basic deals list -->
+                        <div class="deals-grid" id="deals-grid">
+                            <div class="deal-card">
+                                <div class="deal-badge" data-en="Hot Deal" data-bm="Tawaran Panas">Hot Deal</div>
+                                <div class="deal-icon">🏋️</div>
+                                <h3 data-en="Resistance Bands Set" data-bm="Set Band Rintangan">Resistance Bands Set</h3>
+                                <p class="deal-price">RM 39 <span class="deal-original">RM 79</span></p>
+                                <p class="deal-desc" data-en="Perfect for home workouts. 5 resistance levels included." data-bm="Sesuai untuk senaman rumah. 5 tahap rintangan disertakan.">Perfect for home workouts. 5 resistance levels included.</p>
+                                <button class="btn-secondary btn-sm" data-en="View Deal" data-bm="Lihat Tawaran">View Deal</button>
+                            </div>
+                            <div class="deal-card">
+                                <div class="deal-badge" data-en="Popular" data-bm="Popular">Popular</div>
+                                <div class="deal-icon">🥤</div>
+                                <h3 data-en="Whey Protein 2kg" data-bm="Whey Protein 2kg">Whey Protein 2kg</h3>
+                                <p class="deal-price">RM 129 <span class="deal-original">RM 199</span></p>
+                                <p class="deal-desc" data-en="Premium whey protein isolate. 30 servings per container." data-bm="Whey protein isolate premium. 30 hidangan setiap bekas.">Premium whey protein isolate. 30 servings per container.</p>
+                                <button class="btn-secondary btn-sm" data-en="View Deal" data-bm="Lihat Tawaran">View Deal</button>
+                            </div>
+                            <div class="deal-card">
+                                <div class="deal-icon">👟</div>
+                                <h3 data-en="Running Shoes" data-bm="Kasut Lari">Running Shoes</h3>
+                                <p class="deal-price">RM 199 <span class="deal-original">RM 349</span></p>
+                                <p class="deal-desc" data-en="Lightweight training shoes with arch support." data-bm="Kasut latihan ringan dengan sokongan lengkung.">Lightweight training shoes with arch support.</p>
+                                <button class="btn-secondary btn-sm" data-en="View Deal" data-bm="Lihat Tawaran">View Deal</button>
+                            </div>
+                        </div>
+
+                        <!-- Premium: AI Recommendations -->
+                        <div class="premium-lock-section" id="shopping-premium">
+                            <div class="premium-lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <h3 data-en="AI Shopping Recommendations" data-bm="Cadangan Beli-belah AI">AI Shopping Recommendations</h3>
+                                <p data-en="Get personalized product recommendations based on your fitness goals, workout plan, and dietary preferences." data-bm="Dapatkan cadangan produk diperibadikan berdasarkan matlamat kecergasan, pelan senaman, dan keutamaan diet anda.">Get personalized product recommendations based on your fitness goals, workout plan, and dietary preferences.</p>
+                                <button class="btn-primary" onclick="showSubscription()" data-en="Unlock with Premium" data-bm="Buka dengan Premium">Unlock with Premium</button>
+                            </div>
+                            <div class="premium-preview-blur">
+                                <div class="deal-card">
+                                    <div class="deal-badge premium-badge">AI Pick</div>
+                                    <div class="deal-icon">🎯</div>
+                                    <h3>Personalized Supplement Stack</h3>
+                                    <p class="deal-desc">Based on your muscle-building goal...</p>
+                                </div>
+                                <div class="deal-card">
+                                    <div class="deal-badge premium-badge">AI Pick</div>
+                                    <div class="deal-icon">📦</div>
+                                    <h3>Custom Meal Prep Kit</h3>
+                                    <p class="deal-desc">Matched to your halal diet preference...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Career Section -->
+                    <section id="career-section" class="content-section">
+                        <div class="section-header">
+                            <h1 data-en="Career & Opportunities" data-bm="Kerjaya & Peluang">Career & Opportunities</h1>
+                        </div>
+                        <p class="section-desc" data-en="Explore fitness industry opportunities and level up your career." data-bm="Terokai peluang industri kecergasan dan tingkatkan kerjaya anda.">Explore fitness industry opportunities and level up your career.</p>
+
+                        <!-- Free: Browse opportunities -->
+                        <div class="career-grid" id="career-grid">
+                            <div class="career-card">
+                                <div class="career-type" data-en="Certification" data-bm="Pensijilan">Certification</div>
+                                <h3 data-en="Personal Trainer Certification" data-bm="Pensijilan Jurulatih Peribadi">Personal Trainer Certification</h3>
+                                <p data-en="Get certified as a personal trainer. Online course with practical assessment." data-bm="Dapatkan pensijilan sebagai jurulatih peribadi. Kursus dalam talian dengan penilaian praktikal.">Get certified as a personal trainer. Online course with practical assessment.</p>
+                                <div class="career-meta">
+                                    <span>📍 Online</span>
+                                    <span>⏱️ 3 months</span>
+                                </div>
+                            </div>
+                            <div class="career-card">
+                                <div class="career-type" data-en="Job Opening" data-bm="Jawatan Kosong">Job Opening</div>
+                                <h3 data-en="Gym Fitness Instructor" data-bm="Pengajar Kecergasan Gim">Gym Fitness Instructor</h3>
+                                <p data-en="Full-time position at premium fitness center. Experience preferred." data-bm="Jawatan sepenuh masa di pusat kecergasan premium. Pengalaman diutamakan.">Full-time position at premium fitness center. Experience preferred.</p>
+                                <div class="career-meta">
+                                    <span>📍 Kuala Lumpur</span>
+                                    <span>💰 RM 3,000 - 5,000</span>
+                                </div>
+                            </div>
+                            <div class="career-card">
+                                <div class="career-type" data-en="Course" data-bm="Kursus">Course</div>
+                                <h3 data-en="Sports Nutrition Diploma" data-bm="Diploma Pemakanan Sukan">Sports Nutrition Diploma</h3>
+                                <p data-en="Learn the science of sports nutrition and meal planning for athletes." data-bm="Pelajari sains pemakanan sukan dan perancangan makanan untuk atlet.">Learn the science of sports nutrition and meal planning for athletes.</p>
+                                <div class="career-meta">
+                                    <span>📍 Online</span>
+                                    <span>⏱️ 6 months</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium: AI Career Coaching -->
+                        <div class="premium-lock-section" id="career-premium">
+                            <div class="premium-lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <h3 data-en="AI Career Coaching" data-bm="Bimbingan Kerjaya AI">AI Career Coaching</h3>
+                                <p data-en="Get personalized career advice, resume tips for fitness industry, interview prep, and exclusive job alerts." data-bm="Dapatkan nasihat kerjaya diperibadikan, tip resume untuk industri kecergasan, persediaan temuduga, dan makluman kerja eksklusif.">Get personalized career advice, resume tips for fitness industry, interview prep, and exclusive job alerts.</p>
+                                <button class="btn-primary" onclick="showSubscription()" data-en="Unlock with Premium" data-bm="Buka dengan Premium">Unlock with Premium</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Calendar Section -->
+                    <section id="calendar-section" class="content-section">
+                        <div class="section-header">
+                            <h1 data-en="Schedule & Calendar" data-bm="Jadual & Kalendar">Schedule & Calendar</h1>
+                        </div>
+                        <p class="section-desc" data-en="Stay ahead of deadlines with intuitive scheduling tools." data-bm="Kekal di hadapan tarikh akhir dengan alat penjadualan intuitif.">Stay ahead of deadlines with intuitive scheduling tools.</p>
+
+                        <!-- Free: Basic schedule view -->
+                        <div class="calendar-container" id="calendar-basic">
+                            <div class="calendar-week">
+                                <div class="calendar-header-row">
+                                    <span data-en="Mon" data-bm="Isn">Mon</span>
+                                    <span data-en="Tue" data-bm="Sel">Tue</span>
+                                    <span data-en="Wed" data-bm="Rab">Wed</span>
+                                    <span data-en="Thu" data-bm="Kha">Thu</span>
+                                    <span data-en="Fri" data-bm="Jum">Fri</span>
+                                    <span data-en="Sat" data-bm="Sab">Sat</span>
+                                    <span data-en="Sun" data-bm="Ahd">Sun</span>
+                                </div>
+                                <div class="calendar-body" id="calendar-body">
+                                    <!-- Populated by JS -->
+                                </div>
+                            </div>
+                            <div class="schedule-today">
+                                <h3 data-en="Today's Schedule" data-bm="Jadual Hari Ini">Today's Schedule</h3>
+                                <div id="today-schedule" class="schedule-list">
+                                    <div class="schedule-item">
+                                        <span class="schedule-time">7:00 AM</span>
+                                        <span class="schedule-event" data-en="Morning Workout" data-bm="Senaman Pagi">Morning Workout</span>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <span class="schedule-time">12:30 PM</span>
+                                        <span class="schedule-event" data-en="Meal Prep" data-bm="Sediakan Makanan">Meal Prep</span>
+                                    </div>
+                                    <div class="schedule-item">
+                                        <span class="schedule-time">6:00 PM</span>
+                                        <span class="schedule-event" data-en="Evening Stretching" data-bm="Regangan Petang">Evening Stretching</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium: Full calendar integration -->
+                        <div class="premium-lock-section" id="calendar-premium">
+                            <div class="premium-lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <h3 data-en="Full Calendar & Email Integration" data-bm="Integrasi Kalendar & E-mel Penuh">Full Calendar & Email Integration</h3>
+                                <p data-en="Sync with Google Calendar, set custom reminders, auto-schedule workouts around your meetings, and receive email summaries." data-bm="Segerakkan dengan Google Calendar, tetapkan peringatan tersuai, jadualkan senaman secara automatik di sekitar mesyuarat anda, dan terima ringkasan e-mel.">Sync with Google Calendar, set custom reminders, auto-schedule workouts around your meetings, and receive email summaries.</p>
+                                <button class="btn-primary" onclick="showSubscription()" data-en="Unlock with Premium" data-bm="Buka dengan Premium">Unlock with Premium</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Community Section -->
+                    <section id="community-section" class="content-section">
+                        <div class="section-header">
+                            <h1 data-en="Community" data-bm="Komuniti">Community</h1>
+                        </div>
+                        <p class="section-desc" data-en="Connect with fellow fitness enthusiasts and share your journey." data-bm="Berhubung dengan peminat kecergasan lain dan kongsi perjalanan anda.">Connect with fellow fitness enthusiasts and share your journey.</p>
+
+                        <!-- Free: Read-only community feed -->
+                        <div class="community-feed" id="community-feed">
+                            <div class="community-post">
+                                <div class="post-header">
+                                    <span class="post-avatar">💪</span>
+                                    <div class="post-meta">
+                                        <strong>Ahmad F.</strong>
+                                        <span class="post-time" data-en="2 hours ago" data-bm="2 jam lalu">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <p class="post-content" data-en="Just completed my 30-day challenge! Lost 5kg and feeling amazing. Don't give up everyone! 🔥" data-bm="Baru sahaja selesaikan cabaran 30 hari saya! Turun 5kg dan rasa hebat. Jangan berputus asa semua! 🔥">Just completed my 30-day challenge! Lost 5kg and feeling amazing. Don't give up everyone! 🔥</p>
+                                <div class="post-stats">
+                                    <span>❤️ 42</span>
+                                    <span>💬 8</span>
+                                </div>
+                            </div>
+                            <div class="community-post">
+                                <div class="post-header">
+                                    <span class="post-avatar">🧘</span>
+                                    <div class="post-meta">
+                                        <strong>Sarah L.</strong>
+                                        <span class="post-time" data-en="5 hours ago" data-bm="5 jam lalu">5 hours ago</span>
+                                    </div>
+                                </div>
+                                <p class="post-content" data-en="Anyone else doing the morning yoga routine? It's been a game changer for my flexibility! 🧘‍♀️" data-bm="Ada sesiapa lagi yang buat rutin yoga pagi? Ia benar-benar mengubah fleksibiliti saya! 🧘‍♀️">Anyone else doing the morning yoga routine? It's been a game changer for my flexibility! 🧘‍♀️</p>
+                                <div class="post-stats">
+                                    <span>❤️ 28</span>
+                                    <span>💬 12</span>
+                                </div>
+                            </div>
+                            <div class="community-post">
+                                <div class="post-header">
+                                    <span class="post-avatar">🏃</span>
+                                    <div class="post-meta">
+                                        <strong>Raj K.</strong>
+                                        <span class="post-time" data-en="1 day ago" data-bm="1 hari lalu">1 day ago</span>
+                                    </div>
+                                </div>
+                                <p class="post-content" data-en="New personal record on bench press today! 80kg x 5 reps. The AI workout plan is really working! 💪" data-bm="Rekod peribadi baru pada bench press hari ini! 80kg x 5 ulangan. Pelan senaman AI benar-benar berkesan! 💪">New personal record on bench press today! 80kg x 5 reps. The AI workout plan is really working! 💪</p>
+                                <div class="post-stats">
+                                    <span>❤️ 56</span>
+                                    <span>💬 15</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium: Post & interact -->
+                        <div class="premium-lock-section" id="community-premium">
+                            <div class="premium-lock-overlay">
+                                <div class="lock-icon">🔒</div>
+                                <h3 data-en="Join the Conversation" data-bm="Sertai Perbualan">Join the Conversation</h3>
+                                <p data-en="Post updates, comment on others' progress, join challenges, and connect with workout partners." data-bm="Hantar kemas kini, komen kemajuan orang lain, sertai cabaran, dan berhubung dengan rakan senaman.">Post updates, comment on others' progress, join challenges, and connect with workout partners.</p>
+                                <button class="btn-primary" onclick="showSubscription()" data-en="Unlock with Premium" data-bm="Buka dengan Premium">Unlock with Premium</button>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Settings Section -->
                     <section id="settings-section" class="content-section">
                         <h1 data-en="Settings" data-bm="Tetapan">Settings</h1>
@@ -498,7 +751,7 @@
                                 </div>
                                 <p data-en="Upgrade to Premium for unlimited features" data-bm="Naik taraf ke Premium untuk ciri tanpa had">Upgrade to Premium for unlimited features</p>
                                 <button class="btn-primary" onclick="showSubscription()" data-en="View Plans" data-bm="Lihat Pelan">View Plans</button>
-                                <button class="btn-secondary" id="manage-subscription-btn" onclick="openCustomerPortal()" style="display:none; margin-top:8px;" data-en="Manage Subscription" data-bm="Urus Langganan">Manage Subscription</button>
+                                <button class="btn-secondary" id="manage-subscription-btn" onclick="typeof isNativeApp==='function'&&isNativeApp()?showRevenueCatCustomerCenter():openCustomerPortal()" style="display:none; margin-top:8px;" data-en="Manage Subscription" data-bm="Urus Langganan">Manage Subscription</button>
                             </div>
                         </div>
 
@@ -529,10 +782,13 @@
                             <span class="price-period" data-en="/month" data-bm="/bulan">/month</span>
                         </div>
                         <ul class="features-list">
-                            <li>✓ <span data-en="1 workout plan per week" data-bm="1 pelan senaman seminggu">1 workout plan per week</span></li>
+                            <li>✓ <span data-en="Basic workout plans (7-day)" data-bm="Pelan senaman asas (7 hari)">Basic workout plans (7-day)</span></li>
                             <li>✓ <span data-en="Basic nutrition tips" data-bm="Tip pemakanan asas">Basic nutrition tips</span></li>
-                            <li>✓ <span data-en="Limited AI chat" data-bm="Sembang AI terhad">Limited AI chat</span></li>
-                            <li>✓ <span data-en="Basic progress tracking" data-bm="Penjejakan kemajuan asas">Basic progress tracking</span></li>
+                            <li>✓ <span data-en="5 AI chat messages/day" data-bm="5 mesej sembang AI/hari">5 AI chat messages/day</span></li>
+                            <li>✓ <span data-en="Weight tracking only" data-bm="Penjejakan berat sahaja">Weight tracking only</span></li>
+                            <li>✓ <span data-en="Browse deals & opportunities" data-bm="Layari tawaran & peluang">Browse deals & opportunities</span></li>
+                            <li>✓ <span data-en="View community posts" data-bm="Lihat pos komuniti">View community posts</span></li>
+                            <li>✓ <span data-en="Basic schedule view" data-bm="Paparan jadual asas">Basic schedule view</span></li>
                         </ul>
                         <button class="btn-secondary" disabled data-en="Current Plan" data-bm="Pelan Semasa">Current Plan</button>
                     </div>
@@ -545,11 +801,14 @@
                             <span class="price-period" data-en="/month" data-bm="/bulan">/month</span>
                         </div>
                         <ul class="features-list">
-                            <li>✓ <span data-en="Unlimited workout plans" data-bm="Pelan senaman tanpa had">Unlimited workout plans</span></li>
-                            <li>✓ <span data-en="Personalized meal plans" data-bm="Pelan makanan diperibadikan">Personalized meal plans</span></li>
+                            <li>✓ <span data-en="Unlimited workout plans (90-day)" data-bm="Pelan senaman tanpa had (90 hari)">Unlimited workout plans (90-day)</span></li>
+                            <li>✓ <span data-en="Full personalized meal plans" data-bm="Pelan makanan diperibadikan penuh">Full personalized meal plans</span></li>
                             <li>✓ <span data-en="Unlimited AI coach chat" data-bm="Sembang jurulatih AI tanpa had">Unlimited AI coach chat</span></li>
-                            <li>✓ <span data-en="Advanced progress tracking" data-bm="Penjejakan kemajuan lanjutan">Advanced progress tracking</span></li>
-                            <li>✓ <span data-en="Exercise demo images" data-bm="Imej demo senaman">Exercise demo images</span></li>
+                            <li>✓ <span data-en="Full progress tracking & photos" data-bm="Penjejakan kemajuan penuh & foto">Full progress tracking & photos</span></li>
+                            <li>✓ <span data-en="AI shopping recommendations" data-bm="Cadangan beli-belah AI">AI shopping recommendations</span></li>
+                            <li>✓ <span data-en="AI career coaching & job alerts" data-bm="Bimbingan kerjaya AI & makluman kerja">AI career coaching & job alerts</span></li>
+                            <li>✓ <span data-en="Calendar & email integration" data-bm="Integrasi kalendar & e-mel">Calendar & email integration</span></li>
+                            <li>✓ <span data-en="Post & interact in community" data-bm="Hantar & berinteraksi dalam komuniti">Post & interact in community</span></li>
                             <li>✓ <span data-en="Priority support" data-bm="Sokongan keutamaan">Priority support</span></li>
                         </ul>
                         <button class="btn-primary" onclick="subscribePremium()" data-en="Upgrade Now" data-bm="Naik Taraf Sekarang">Upgrade Now</button>
@@ -596,6 +855,9 @@
     
     <!-- Stripe Payment Integration -->
     <script src="stripe-payment.js"></script>
+    
+    <!-- RevenueCat Payment Integration (Android Native) -->
+    <script src="revenuecat-payment.js"></script>
     
     <!-- Main App Script -->
     <script src="app.js"></script>

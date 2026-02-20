@@ -1,0 +1,11 @@
+{
+  "appId": "com.mindpilot.fitaicoach",
+  "appName": "FitAI Coach",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}
