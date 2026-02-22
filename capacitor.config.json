@@ -3,9 +3,16 @@
   "appName": "FitAI Coach",
   "webDir": "www",
   "server": {
-    "androidScheme": "https"
+    "androidScheme": "https",
+    "iosScheme": "https"
   },
   "android": {
     "allowMixedContent": true
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "allowsLinkPreview": true,
+    "scrollEnabled": true,
+    "scheme": "FitAI Coach"
   }
 }
