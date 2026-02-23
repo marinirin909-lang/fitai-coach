@@ -153,7 +153,7 @@ function toggleMobileMenu() {
         navLinks.style.position = 'absolute';
         navLinks.style.top = '70px';
         navLinks.style.right = '20px';
-        navLinks.style.background = 'white';
+        navLinks.style.background = 'var(--bg-secondary)';
         navLinks.style.padding = '20px';
         navLinks.style.borderRadius = '12px';
         navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.2)';

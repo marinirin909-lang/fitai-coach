@@ -41,6 +41,16 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Respect user motion preferences & improve paint performance */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: var(--bg-color);
@@ -691,9 +701,10 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 40px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
     position: relative;
     overflow: hidden;
+    contain: content;
 }
 
 .feature-box::before {
@@ -790,8 +801,9 @@ body {
     flex: 1;
     max-width: 320px;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
+    contain: content;
 }
 
 .step-card::after {
@@ -918,8 +930,9 @@ body {
     border: 2px solid var(--border-color);
     border-radius: 20px;
     padding: 48px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    contain: content;
 }
 
 .pricing-box:hover {
@@ -1085,8 +1098,9 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 32px;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
+    contain: content;
 }
 
 .testimonial-card::before {
