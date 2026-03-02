@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17962907330"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17962907330');
+    </script>
+    <title>Delete Account - FitAI Coach</title>
+    <meta name="description" content="Request deletion of your FitAI Coach account and associated data. Learn what data will be removed and how the process works.">
+    <link rel="stylesheet" href="landing-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .legal-page {
+            min-height: 100vh;
+            background: var(--bg-color);
+            padding-top: 100px;
+        }
+        
+        .legal-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+        
+        .legal-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .legal-title {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+        
+        .legal-updated {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .legal-section {
+            margin-bottom: 50px;
+        }
+        
+        .legal-section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--card-bg);
+        }
+        
+        .legal-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 25px 0 15px;
+        }
+        
+        .legal-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .legal-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .legal-section li {
+            margin-bottom: 10px;
+        }
+        
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(239, 68, 68, 0.05));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .warning-box h3 {
+            color: #ef4444;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .warning-box p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        .deletion-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin: 25px 0;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            accent-color: var(--accent-color);
+        }
+        
+        .checkbox-group label {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .submit-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+        
+        .contact-alternative {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.05));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .contact-alternative h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+        
+        .contact-alternative a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .contact-alternative a:hover {
+            text-decoration: underline;
+        }
+        
+        .data-list {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+        
+        .data-list h4 {
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .success-message h3 {
+            color: #22c55e;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .legal-title {
+                font-size: 2rem;
+            }
+            
+            .deletion-form {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="landing.html" class="logo">
+                <img src="logo.png" alt="FitAI Coach Logo">
+                <span>FitAI Coach</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="landing.html#features">Features</a></li>
+                <li><a href="landing.html#pricing">Pricing</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+                <li><a href="terms-and-conditions.html">Terms</a></li>
+            </ul>
+            <a href="app.html" class="cta-button">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="legal-page">
+        <div class="legal-container">
+            <header class="legal-header">
+                <h1 class="legal-title">Delete Your Account</h1>
+                <p class="legal-updated">Request account deletion and data removal</p>
+            </header>
+
+            <!-- Warning Section -->
+            <div class="warning-box">
+                <h3>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                    Important Notice
+                </h3>
+                <p>Account deletion is permanent and cannot be undone. Once your account is deleted, all your data will be permanently removed from our servers within 30 days. This action cannot be reversed.</p>
+            </div>
+
+            <!-- What Gets Deleted Section -->
+            <section class="legal-section">
+                <h2>What Data Will Be Deleted</h2>
+                <p>When you request account deletion, the following data will be permanently removed:</p>
+                
+                <div class="data-list">
+                    <h4>Account Information</h4>
+                    <ul>
+                        <li>Your profile information (name, email, profile photo)</li>
+                        <li>Account credentials and authentication data</li>
+                        <li>Subscription and billing information</li>
+                        <li>Device and login history</li>
+                    </ul>
+                </div>
+
+                <div class="data-list">
+                    <h4>Fitness Data</h4>
+                    <ul>
+                        <li>Workout history and exercise logs</li>
+                        <li>Personalized workout plans</li>
+                        <li>Fitness progress and statistics</li>
+                        <li>Goals and achievements</li>
+                        <li>Body measurements and weight history</li>
+                        <li>Nutrition and meal tracking data</li>
+                    </ul>
+                </div>
+
+                <div class="data-list">
+                    <h4>AI Generated Content</h4>
+                    <ul>
+                        <li>AI-generated workout recommendations</li>
+                        <li>Chat history with AI fitness coach</li>
+                        <li>Personalized fitness insights</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- What Is Retained Section -->
+            <section class="legal-section">
+                <h2>Data Retention</h2>
+                <p>Some data may be retained for legal and security purposes:</p>
+                <ul>
+                    <li><strong>Financial records:</strong> Transaction history is retained for 7 years as required by tax and accounting laws</li>
+                    <li><strong>Security logs:</strong> IP addresses and access logs are retained for 90 days for fraud prevention</li>
+                    <li><strong>Legal compliance:</strong> Data required for legal disputes or investigations may be retained as required by law</li>
+                </ul>
+                <p>All retained data is anonymized and cannot be linked back to your identity.</p>
+            </section>
+
+            <!-- Timeline Section -->
+            <section class="legal-section">
+                <h2>Deletion Timeline</h2>
+                <ul>
+                    <li><strong>Immediate:</strong> Account access is disabled</li>
+                    <li><strong>Within 7 days:</strong> Your data is removed from active systems</li>
+                    <li><strong>Within 30 days:</strong> Complete removal from all backups and storage systems</li>
+                </ul>
+            </section>
+
+            <!-- Account Deletion Form -->
+            <section class="legal-section">
+                <h2>Request Account Deletion</h2>
+                <p>Please fill out the form below to request deletion of your account. We will process your request within 7 business days and send a confirmation email.</p>
+
+                <form class="deletion-form" id="deletionForm">
+                    <div class="form-group">
+                        <label for="email">Account Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your registered email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason for Deletion (Optional)</label>
+                        <textarea id="reason" name="reason" placeholder="Help us improve by sharing why you're leaving..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-text">Type "DELETE" to confirm *</label>
+                        <input type="text" id="confirm-text" name="confirm-text" required placeholder="DELETE" pattern="DELETE">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="understand" name="understand" required>
+                        <label for="understand">I understand that deleting my account is permanent and cannot be undone. All my data will be permanently deleted within 30 days. *</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="subscription" name="subscription">
+                        <label for="subscription">I have canceled any active subscriptions (if applicable). I understand that deleting my account does not automatically refund any payments.</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Request Account Deletion</button>
+                </form>
+
+                <div class="success-message" id="successMessage">
+                    <h3>Deletion Request Received</h3>
+                    <p>We have received your account deletion request. A confirmation email has been sent to your registered email address. Your account will be deleted within 7 business days.</p>
+                    <p>If you have any questions, please contact us at <a href="mailto:support@fitaicoach.com">support@fitaicoach.com</a></p>
+                </div>
+            </section>
+
+            <!-- Alternative Contact Section -->
+            <div class="contact-alternative">
+                <h3>Need Help?</h3>
+                <p>If you're experiencing issues or have concerns, our support team is here to help. Contact us at <a href="mailto:support@fitaicoach.com">support@fitaicoach.com</a> before proceeding with deletion.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo">
+                    <img src="logo.png" alt="FitAI Coach Logo">
+                    <span>FitAI Coach</span>
+                </div>
+                <p>Your AI-powered personal fitness companion.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                    <li><a href="delete-account.html">Delete Account</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p>Email: <a href="mailto:support@fitaicoach.com">support@fitaicoach.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024-2026 FitAI Coach. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('deletionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In production, this would send data to your backend
+            // For now, show success message
+            document.getElementById('deletionForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // Log for debugging (remove in production)
+            console.log('Account deletion requested for:', document.getElementById('email').value);
+        });
+    </script>
+</body>
+</html>
