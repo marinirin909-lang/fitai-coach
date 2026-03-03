@@ -10,6 +10,13 @@
 
 # Redirect rules
 [[redirects]]
+  # Serve .well-known files directly (Digital Asset Links, etc.)
+  from = "/.well-known/*"
+  to = "/.well-known/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
   # Redirect root to landing page
   from = "/"
   to = "/landing.html"
