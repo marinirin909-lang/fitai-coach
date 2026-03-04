@@ -17,6 +17,27 @@
   force = true
 
 [[redirects]]
+  # Serve delete-account.html directly
+  from = "/delete-account.html"
+  to = "/delete-account.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  # Serve privacy-policy.html directly
+  from = "/privacy-policy.html"
+  to = "/privacy-policy.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  # Serve terms-and-conditions.html directly
+  from = "/terms-and-conditions.html"
+  to = "/terms-and-conditions.html"
+  status = 200
+  force = true
+
+[[redirects]]
   # Redirect root to landing page
   from = "/"
   to = "/landing.html"
