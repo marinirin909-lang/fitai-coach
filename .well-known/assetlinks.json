@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.fitai.coach.personal",
+      "sha256_cert_fingerprints": [
+        "5B:62:B1:72:CA:62:B2:7B:8C:44:1E:12:7A:A3:E6:38:49:CB:0A:4F:AC:07:90:C1:B3:C5:B1:83:F2:C1:77:6C"
+      ]
+    }
+  }
+]

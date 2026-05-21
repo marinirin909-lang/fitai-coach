@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">FitAI Coach</string>
+    <string name="title_activity_main">FitAI Coach</string>
+    <string name="package_name">com.mindpilot.fitaicoach</string>
+    <string name="custom_url_scheme">com.mindpilot.fitaicoach</string>
+</resources>

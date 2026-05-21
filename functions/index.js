@@ -1,18 +1,22 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 const cors = require("cors")({ origin: true });
+const Stripe = require("stripe");
 
 admin.initializeApp();
 const db = admin.firestore();
 
 // ============================================================
-// Configuration is loaded from functions/.env file
-// See functions/.env.example for required variables
+// Configuration is loaded from environment variables
+// Set via: firebase functions:secrets:set STRIPE_SECRET_KEY
 // ============================================================
 
+let _stripe = null;
 function getStripe() {
-  const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-  return stripe;
+  if (!_stripe) {
+    _stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+  }
+  return _stripe;
 }
 
 // ----------------------------------------------------------
@@ -51,9 +55,9 @@ exports.createCheckoutSession = functions.https.onRequest((req, res) => {
         customerId = customer.id;
 
         // Save Stripe customer ID to Firestore
-        await db.collection("users").doc(userId).update({
+        await db.collection("users").doc(userId).set({
           stripeCustomerId: customerId,
-        });
+        }, { merge: true });
       }
 
       // Create checkout session for a recurring subscription
@@ -154,13 +158,13 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
         const firebaseUID = session.metadata.firebaseUID;
 
         if (firebaseUID) {
-          await db.collection("users").doc(firebaseUID).update({
+          await db.collection("users").doc(firebaseUID).set({
             isPremium: true,
             stripeSubscriptionId: session.subscription,
             stripeCustomerId: session.customer,
             subscriptionStatus: "active",
             subscriptionUpdatedAt: admin.firestore.FieldValue.serverTimestamp(),
-          });
+          }, { merge: true });
           console.log(`User ${firebaseUID} upgraded to Premium`);
         }
         break;
@@ -173,11 +177,11 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
 
         if (firebaseUID) {
           const isActive = ["active", "trialing"].includes(subscription.status);
-          await db.collection("users").doc(firebaseUID).update({
+          await db.collection("users").doc(firebaseUID).set({
             isPremium: isActive,
             subscriptionStatus: subscription.status,
             subscriptionUpdatedAt: admin.firestore.FieldValue.serverTimestamp(),
-          });
+          }, { merge: true });
           console.log(`User ${firebaseUID} subscription updated: ${subscription.status}`);
         }
         break;
@@ -189,11 +193,11 @@ exports.stripeWebhook = functions.https.onRequest(async (req, res) => {
         const firebaseUID = subscription.metadata.firebaseUID;
 
         if (firebaseUID) {
-          await db.collection("users").doc(firebaseUID).update({
+          await db.collection("users").doc(firebaseUID).set({
             isPremium: false,
             subscriptionStatus: "cancelled",
             subscriptionUpdatedAt: admin.firestore.FieldValue.serverTimestamp(),
-          });
+          }, { merge: true });
           console.log(`User ${firebaseUID} subscription cancelled`);
         }
         break;
