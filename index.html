@@ -3,611 +3,2414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitAI Coach - Your AI-Powered Personal Fitness Journey</title>
-    <meta name="description" content="AI-powered fitness coach for Malaysia & Southeast Asia. Personalized workouts, halal nutrition, and 24/7 AI coaching. Start free!">
-    <meta name="keywords" content="AI fitness coach, personal trainer, workout plans, halal nutrition, Malaysia fitness app, exercise planner">
-    <meta name="author" content="MindPilot">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.mindpilot.online/">
-    <!-- Open Graph -->
-    <meta property="og:title" content="FitAI Coach - Your AI-Powered Personal Fitness Journey">
-    <meta property="og:description" content="Get personalized workout plans, halal nutrition guidance, and 24/7 AI coaching. Made for Malaysia & Southeast Asia.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.mindpilot.online/">
-    <meta property="og:image" content="https://www.mindpilot.online/logo.png">
-    <meta property="og:site_name" content="FitAI Coach">
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="FitAI Coach - AI-Powered Personal Fitness Coach">
-    <meta name="twitter:description" content="Personalized workout plans, halal nutrition, and 24/7 AI coaching for Malaysia & Southeast Asia.">
-    <meta name="twitter:image" content="https://www.mindpilot.online/logo.png">
-    <meta name="theme-color" content="#d4af37">
-    <!-- Preconnect to critical origins -->
+    <title>FitAI Coach - Your AI-Powered Fitness & Wellness Companion</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.googletagmanager.com">
-    <link rel="preconnect" href="https://www.gstatic.com">
-    <!-- Inline critical CSS for above-the-fold content -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
-      :root{--primary-color:#d4af37;--primary-dark:#b8941f;--secondary-color:#f4c542;--accent-color:#ffd700;--bg-color:#0a0a0a;--bg-secondary:#1a1a1a;--bg-tertiary:#2a2a2a;--text-primary:#fff;--text-secondary:#b0b0b0;--text-light:#808080;--border-color:#333;--card-shadow:0 4px 6px rgba(0,0,0,.5);--card-shadow-hover:0 10px 30px rgba(212,175,55,.3);--success-color:#d4af37;--gradient-primary:linear-gradient(135deg,#d4af37,#f4c542);--gradient-secondary:linear-gradient(135deg,#b8941f,#d4af37);--gradient-dark:linear-gradient(180deg,#0a0a0a 0%,#1a1a1a 100%)}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg-color);color:var(--text-primary);line-height:1.6;overflow-x:hidden}.container{max-width:1200px;margin:0 auto;padding:0 20px}.navbar{position:fixed;top:0;left:0;right:0;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border-color);z-index:1000;padding:16px 0}.nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center}.nav-logo{display:flex;align-items:center;gap:12px;font-size:1.5rem;font-weight:800}.logo-image{width:50px;height:50px;object-fit:contain;border-radius:50%}.logo-text{background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nav-links{display:flex;align-items:center;gap:32px}.nav-links a{color:var(--text-secondary);text-decoration:none;font-weight:500}.btn-nav-signup{background:var(--gradient-primary);border:none;color:#000;padding:12px 28px;border-radius:8px;font-weight:600;cursor:pointer}.btn-nav-login{background:transparent;border:2px solid var(--border-color);color:var(--text-primary);padding:10px 24px;border-radius:8px;font-weight:600;cursor:pointer}.mobile-menu-btn{display:none;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-primary)}.hero{margin-top:80px;padding:100px 0 80px;background:var(--gradient-dark);position:relative;overflow:hidden}.hero-container{max-width:1200px;margin:0 auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.hero-content{animation:fadeInUp .8s ease}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.hero-title{font-size:3.5rem;font-weight:900;line-height:1.1;margin-bottom:24px}.gradient-text{background:var(--gradient-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.hero-subtitle{font-size:1.25rem;color:var(--text-secondary);margin-bottom:40px;line-height:1.8}.hero-cta{display:flex;gap:16px;margin-bottom:60px}.btn-primary-large{background:var(--gradient-primary);color:#000;border:none;padding:18px 40px;font-size:1.1rem;font-weight:700;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:8px}.btn-secondary-large{background:rgba(26,26,26,.8);color:var(--primary-color);border:2px solid var(--primary-color);padding:18px 40px;font-size:1.1rem;font-weight:700;border-radius:12px;cursor:pointer;display:flex;align-items:center;gap:8px}.hero-stats{display:flex;gap:48px}.stat-number{font-size:2rem;font-weight:800;color:var(--primary-color);margin-bottom:4px}.stat-label{font-size:.9rem;color:var(--text-secondary)}@media(max-width:968px){.nav-links{display:none}.mobile-menu-btn{display:block}.hero-container{grid-template-columns:1fr}.hero-title{font-size:2.5rem}.hero-cta{flex-direction:column;align-items:center}.hero-stats{justify-content:center;flex-wrap:wrap}}@media(max-width:767px){.hero{margin-top:60px;padding:60px 0 40px}.hero-title{font-size:2rem}.navbar{padding:12px 0}.nav-logo .logo-image{width:40px;height:40px}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dark-bg: #050508;
+            --neon-green: #39ff14;
+            --electric-lime: #a8ff3e;
+            --cyan: #00d4ff;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(57, 255, 20, 0.2);
+            --accent-green: #39ff14;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #050508 0%, #0a0a10 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57, 255, 20, 0.03) 2px, rgba(57, 255, 20, 0.03) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(57, 255, 20, 0.03) 2px, rgba(57, 255, 20, 0.03) 4px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        main {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 8, 0.8);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(5, 5, 8, 0.95);
+            border-bottom-color: rgba(57, 255, 20, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--neon-green);
+        }
+
+        .logo::before {
+            content: '🧠';
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--neon-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95rem;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+
+        .cta-btn:hover {
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--neon-green);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(57, 255, 20, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--neon-green) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn-primary {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 50px rgba(57, 255, 20, 0.8);
+            transform: translateY(-3px);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--neon-green);
+            padding: 1rem 2rem;
+            border: 2px solid var(--neon-green);
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+        }
+
+        .trust-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .trust-bar strong {
+            color: var(--neon-green);
+        }
+
+        /* MARQUEE */
+        .marquee-section {
+            background: rgba(57, 255, 20, 0.05);
+            border-top: 1px solid rgba(57, 255, 20, 0.2);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+            padding: 2rem 0;
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            gap: 3rem;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .marquee-item {
+            color: var(--neon-green);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* FEATURES SECTION */
+        .features {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--neon-green) 0%, var(--cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 4rem;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(57, 255, 20, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.08);
+            transform: translateY(-10px);
+        }
+
+        .feature-card:hover::before {
+            top: 0;
+            right: 0;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--neon-green);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* EXERCISE LIBRARY SECTION */
+        .exercise-library {
+            padding: 6rem 2rem;
+            background: rgba(0, 212, 255, 0.02);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .exercise-library .max-width {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .library-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .library-badge {
+            display: inline-block;
+            background: rgba(57, 255, 20, 0.2);
+            color: var(--neon-green);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .filters-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--neon-green);
+        }
+
+        .filter-group select {
+            padding: 0.7rem;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-group select:hover,
+        .filter-group select:focus {
+            border-color: var(--neon-green);
+            outline: none;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        }
+
+        .filter-group select option {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+        }
+
+        .search-btn {
+            align-self: flex-end;
+            padding: 0.7rem 2rem;
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            grid-column: 1 / -1;
+            margin-top: 0.5rem;
+        }
+
+        .search-btn:hover {
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .search-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .exercise-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .exercise-card:nth-child(1) { animation-delay: 0s; }
+        .exercise-card:nth-child(2) { animation-delay: 0.1s; }
+        .exercise-card:nth-child(3) { animation-delay: 0.2s; }
+        .exercise-card:nth-child(4) { animation-delay: 0.3s; }
+        .exercise-card:nth-child(5) { animation-delay: 0.4s; }
+        .exercise-card:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .exercise-card:hover {
+            border-color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .exercise-card.locked {
+            position: relative;
+        }
+
+        .exercise-card.locked::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 5, 8, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            z-index: 3;
+        }
+
+        .exercise-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-type {
+            background: rgba(0, 212, 255, 0.2);
+            color: var(--cyan);
+        }
+
+        .badge-muscle {
+            background: rgba(57, 255, 20, 0.2);
+            color: var(--neon-green);
+        }
+
+        .badge-difficulty {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-difficulty.beginner {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+
+        .badge-difficulty.intermediate {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
+        }
+
+        .badge-difficulty.expert {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+        }
+
+        .exercise-equipment {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructions-toggle {
+            background: transparent;
+            color: var(--cyan);
+            border: 1px solid var(--cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .instructions-toggle:hover {
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .instructions {
+            display: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .instructions.active {
+            display: block;
+        }
+
+        .instructions ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .locked-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 5, 8, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            z-index: 4;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .locked-overlay-text {
+            color: var(--neon-green);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .exercise-cta {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            z-index: 5;
+            position: relative;
+        }
+
+        .exercise-cta:hover {
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
+        .loading-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skeleton {
+            background: linear-gradient(90deg, rgba(57, 255, 20, 0.1) 25%, rgba(57, 255, 20, 0.2) 50%, rgba(57, 255, 20, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+            border-radius: 12px;
+            height: 300px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+        }
+
+        .step {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step:hover {
+            border-color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.08);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .step h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .step p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .connecting-line {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-green), var(--cyan), var(--neon-green));
+            z-index: 1;
+            display: none;
+        }
+
+        @media (min-width: 897px) {
+            .connecting-line {
+                display: block;
+            }
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            padding: 6rem 2rem;
+            background: rgba(57, 255, 20, 0.02);
+            border-top: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .pricing .max-width {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            margin-top: 2rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 32px;
+            background: rgba(57, 255, 20, 0.2);
+            border-radius: 16px;
+            cursor: pointer;
+            border: 1px solid var(--card-border);
+            transition: all 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: var(--neon-green);
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 26px;
+            height: 26px;
+            background: var(--dark-bg);
+            border-radius: 50%;
+            transition: left 0.3s;
+        }
+
+        .toggle-switch.active .toggle-slider {
+            left: 31px;
+        }
+
+        .savings-badge {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border-color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.1);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Best Value';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--cyan);
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .plan-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--neon-green);
+        }
+
+        .price {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            padding: 0.7rem 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--neon-green);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .pricing-card button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card button:hover {
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .guarantee {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .no-free-tier {
+            grid-column: 1 / -1;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .no-free-tier h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--cyan);
+            margin-bottom: 1rem;
+        }
+
+        .no-free-tier p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* TESTIMONIALS */
+        .testimonials {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-carousel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.08);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-green), var(--cyan));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .testimonial-name {
+            font-weight: 700;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .testimonial-role {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .stars {
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .testimonial-result {
+            background: rgba(57, 255, 20, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--neon-green);
+        }
+
+        .result-metric {
+            font-weight: 700;
+            color: var(--neon-green);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .result-description {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* FAQ */
+        .faq {
+            padding: 6rem 2rem;
+            background: rgba(0, 212, 255, 0.02);
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .faq .max-width {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .accordion-item {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .accordion-item:hover {
+            border-color: var(--neon-green);
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+
+        .accordion-item.active .accordion-header {
+            background: rgba(57, 255, 20, 0.1);
+        }
+
+        .accordion-header:hover {
+            background: rgba(57, 255, 20, 0.08);
+        }
+
+        .accordion-icon {
+            color: var(--neon-green);
+            transition: transform 0.3s;
+            font-size: 1.3rem;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-body {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* FINAL CTA */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, rgba(57, 255, 20, 0.08) 0%, rgba(0, 212, 255, 0.08) 100%);
+            border-top: 1px solid rgba(57, 255, 20, 0.2);
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+            text-align: center;
+        }
+
+        .final-cta .max-width {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--card-border);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .cta-form input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+
+        .cta-form input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .cta-form button {
+            padding: 1rem 2rem;
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cta-form button:hover {
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .fine-print {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(5, 5, 8, 0.8);
+            border-top: 1px solid rgba(57, 255, 20, 0.1);
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--neon-green);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--neon-green);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(57, 255, 20, 0.1);
+            border: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(57, 255, 20, 0.1);
+        }
+
+        /* POPUPS */
+        .exit-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            max-width: 450px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .exit-popup.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .popup-close:hover {
+            color: var(--neon-green);
+        }
+
+        .exit-popup h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-green);
+        }
+
+        .exit-popup p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .exit-popup button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 0.5rem;
+        }
+
+        .exit-popup button:hover {
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+        }
+
+        .exit-popup .secondary-btn {
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+        }
+
+        .exit-popup .secondary-btn:hover {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+        }
+
+        /* MOBILE STICKY BAR */
+        .mobile-sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark-bg);
+            border-top: 2px solid var(--neon-green);
+            padding: 1rem;
+            z-index: 100;
+            display: none;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .mobile-sticky-bar.active {
+            display: flex;
+        }
+
+        .mobile-sticky-bar p {
+            color: var(--text-secondary);
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .mobile-sticky-bar button {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+            }
+
+            .cta-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 5rem 1rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 6vw, 3rem);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .hero-buttons button {
+                width: 100%;
+            }
+
+            .marquee {
+                font-size: 0.85rem;
+                gap: 2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+
+            .connecting-line {
+                display: none;
+            }
+
+            .pricing-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+
+            .filters-container {
+                grid-template-columns: 1fr;
+            }
+
+            .search-btn {
+                grid-column: auto;
+            }
+
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-form input,
+            .cta-form button {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .exit-popup {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .mobile-sticky-bar.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .mobile-sticky-bar button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0.75rem 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            }
+
+            .section-title {
+                font-size: clamp(1.5rem, 4vw, 2.5rem);
+            }
+
+            .hero-buttons {
+                gap: 0.5rem;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .marquee {
+                font-size: 0.75rem;
+                gap: 1.5rem;
+            }
+
+            .pricing-toggle {
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .price {
+                font-size: 2rem;
+            }
+
+            .feature-icon {
+                font-size: 2rem;
+            }
+
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .filters-container {
+                padding: 1rem;
+            }
+
+            .mobile-sticky-bar.active {
+                padding: 0.75rem;
+                gap: 0.5rem;
+            }
+
+            .mobile-sticky-bar p {
+                font-size: 0.85rem;
+            }
+
+            .mobile-sticky-bar button {
+                padding: 0.5rem 1rem;
+                font-size: 0.8rem;
+            }
+        }
     </style>
-    <!-- Defer full CSS -->
-    <link rel="preload" href="landing-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="landing-styles.css"></noscript>
-    <!-- Defer Google Fonts with font-display swap -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap"></noscript>
-    <!-- Google tag (gtag.js) - deferred -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17962907330"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17962907330');
-    </script>
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "FitAI Coach",
-      "applicationCategory": "HealthApplication",
-      "operatingSystem": "Web, Android, iOS",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "MYR"
-      },
-      "description": "AI-powered personal fitness coach with personalized workout plans, halal nutrition guidance, and 24/7 AI coaching for Malaysia & Southeast Asia.",
-      "url": "https://www.mindpilot.online/",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "1000"
-      }
-    }
-    </script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
+    <!-- NAVIGATION -->
+    <nav>
         <div class="nav-container">
-            <div class="nav-logo">
-                <img src="logo.png" alt="FitAI Coach Logo" class="logo-image" width="50" height="50">
-                <span class="logo-text">FitAI Coach</span>
+            <div class="logo">FitAI Coach</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#exercises">Exercise Library</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button class="cta-btn">Start Today</button>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="nav-links">
-                <a href="#features" data-i18n="nav.features">Features</a>
-                <a href="#how-it-works" data-i18n="nav.howItWorks">How It Works</a>
-                <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
-                <a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a>
-                <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
-                    <span class="theme-toggle-icon">🌓</span>
-                </button>
-                <div class="language-toggle">
-                    <button class="lang-btn active" data-lang="en" onclick="switchLanguage('en')">EN</button>
-                    <button class="lang-btn" data-lang="bm" onclick="switchLanguage('bm')">BM</button>
-                </div>
-                <button class="btn-nav-login" onclick="showLoginModal()" data-i18n="nav.login">Login</button>
-                <button class="btn-nav-signup" onclick="showSignupModal()" data-i18n="nav.getStarted">Get Started Free</button>
-            </div>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span data-i18n="hero.badge">🇲🇾 Made for Malaysia & Southeast Asia</span>
+                <h1>Your AI Personal Trainer.<br/>Always On. Always Ready.</h1>
+                <p>Get personalized workout plans, halal nutrition guides, and real-time AI coaching — built for Malaysia & Southeast Asia.</p>
+                <div class="hero-buttons">
+                    <button class="btn-primary" onclick="scrollToSection('pricing')">Start Today → RM39/month</button>
+                    <button class="btn-secondary" onclick="scrollToSection('exercises')">Try Exercise Library ↓</button>
                 </div>
-                <h1 class="hero-title">
-                    <span data-i18n="hero.title1">Your AI-Powered</span><br>
-                    <span class="gradient-text" data-i18n="hero.title2">Personal Fitness Coach</span>
-                </h1>
-                <p class="hero-subtitle" data-i18n="hero.subtitle">
-                    Get personalized workout plans, nutrition guidance, and 24/7 AI coaching support. 
-                    Transform your fitness journey with intelligent, adaptive training designed for you.
-                </p>
-                <div class="hero-cta">
-                    <button class="btn-primary-large" onclick="showSignupModal()">
-                        <span data-i18n="hero.cta.primary">Start Your Free Journey</span>
-                        <span class="btn-arrow">→</span>
-                    </button>
-                    <button class="btn-secondary-large" onclick="scrollToDemo()">
-                        <span class="play-icon">▶</span>
-                        <span data-i18n="hero.cta.secondary">Watch Demo</span>
-                    </button>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number">1000+</div>
-                        <div class="stat-label" data-i18n="hero.stats.users">Active Users</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">50K+</div>
-                        <div class="stat-label" data-i18n="hero.stats.workouts">Workouts Generated</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">4.9★</div>
-                        <div class="stat-label" data-i18n="hero.stats.rating">User Rating</div>
-                    </div>
+                <div class="trust-bar">
+                    <span>★★★★★</span>
+                    <span>Loved by <strong>1,000+ users</strong> in Malaysia</span>
                 </div>
             </div>
-            <div class="hero-image">
-                <div class="hero-mockup">
-                    <div class="mockup-screen">
-                        <div class="mockup-header">
-                            <div class="mockup-dots">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                        <div class="mockup-content">
-                            <div class="mockup-card">
-                                <div class="card-icon">💪</div>
-                                <h3>Today's Workout</h3>
-                                <p>Upper Body Strength</p>
-                                <div class="progress-bar-mockup">
-                                    <div class="progress-fill-mockup"></div>
-                                </div>
-                            </div>
-                            <div class="mockup-card">
-                                <div class="card-icon">🥗</div>
-                                <h3>Meal Plan</h3>
-                                <p>Nasi Lemak Sihat - 450 kcal</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Video Demo Section -->
-    <section class="video-section" id="demo">
-        <div class="container">
-            <div class="video-container">
-                <h2 class="section-title" data-i18n="video.title">See FitAI Coach in Action</h2>
-                <p class="section-subtitle" data-i18n="video.subtitle">Watch how our AI-powered fitness coach transforms your workout experience</p>
-                <div class="video-wrapper">
-                    <video class="demo-video" controls poster="logo.png" preload="none" loading="lazy">
-                        <source src="fitai.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
+        <!-- MARQUEE -->
+        <section class="marquee-section">
+            <div class="marquee">
+                <span class="marquee-item">AI Coaching ✦</span>
+                <span class="marquee-item">Halal Nutrition ✦</span>
+                <span class="marquee-item">1000+ Exercises ✦</span>
+                <span class="marquee-item">Progress Tracking ✦</span>
+                <span class="marquee-item">Workout Plans ✦</span>
+                <span class="marquee-item">Bilingual Support ✦</span>
+                <span class="marquee-item">AI Coaching ✦</span>
+                <span class="marquee-item">Halal Nutrition ✦</span>
+                <span class="marquee-item">1000+ Exercises ✦</span>
+                <span class="marquee-item">Progress Tracking ✦</span>
+                <span class="marquee-item">Workout Plans ✦</span>
+                <span class="marquee-item">Bilingual Support ✦</span>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title" data-i18n="features.title">Everything You Need to Succeed</h2>
-                <p class="section-subtitle" data-i18n="features.subtitle">Powered by AI, designed for real results</p>
-            </div>
-            
+        <!-- FEATURES SECTION -->
+        <section class="features" id="features">
+            <h2 class="section-title">Everything You Need to Transform</h2>
+            <p class="section-subtitle">Comprehensive tools for fitness success</p>
             <div class="features-grid">
-                <div class="feature-box">
-                    <div class="feature-icon-large">🎯</div>
-                    <h3>Personalized Workout Plans</h3>
-                    <p>AI-generated workout plans tailored to your fitness level, goals, and available equipment. From beginner to advanced, home to gym.</p>
-                    <ul class="feature-list">
-                        <li>✓ 7-90 day custom plans</li>
-                        <li>✓ Adaptive difficulty scaling</li>
-                        <li>✓ No equipment to full gym options</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Personal Coach</h3>
+                    <p>Unlimited conversations with your AI personal trainer who understands your goals, fitness level, and preferences.</p>
                 </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">🥗</div>
-                    <h3>Malaysian Nutrition Guidance</h3>
-                    <p>Get meal plans featuring local halal cuisine. Healthy versions of Nasi Lemak, Ayam Percik, and more with calorie tracking.</p>
-                    <ul class="feature-list">
-                        <li>✓ Halal meal suggestions</li>
-                        <li>✓ Local Malaysian recipes</li>
-                        <li>✓ Macro & calorie breakdown</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Halal Nutrition Guide</h3>
+                    <p>Meal plans based on local halal-certified food from Malaysia and Southeast Asia, tailored to your body composition goals.</p>
                 </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">💬</div>
-                    <h3>24/7 AI Coach Chat</h3>
-                    <p>Your personal AI fitness coach available anytime. Get motivation, adjust workouts, ask questions, and receive instant support.</p>
-                    <ul class="feature-list">
-                        <li>✓ Instant AI responses</li>
-                        <li>✓ Motivational support</li>
-                        <li>✓ Personalized recommendations</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>1,000+ Exercise Library</h3>
+                    <p>Access our complete exercise database with step-by-step instructions, video-ready formats, and muscle group targeting.</p>
                 </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">�</div>
-                    <h3>Deals & AI Shopping</h3>
-                    <p>Discover curated fitness deals and get AI-driven product recommendations tailored to your workout goals and dietary preferences.</p>
-                    <ul class="feature-list">
-                        <li>✓ Curated fitness deals</li>
-                        <li>✓ AI product recommendations</li>
-                        <li>✓ Exclusive member discounts</li>
-                    </ul>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Analytics</h3>
+                    <p>Track every rep, set, and calorie. Visualize your progress with detailed analytics and body composition tracking.</p>
                 </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">💼</div>
-                    <h3>Career & Opportunities</h3>
-                    <p>Explore fitness industry certifications, job openings, and courses. Get AI career coaching to level up your professional journey.</p>
-                    <ul class="feature-list">
-                        <li>✓ Certification programs</li>
-                        <li>✓ Job listings & alerts</li>
-                        <li>✓ AI career coaching</li>
-                    </ul>
-                </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">📅</div>
-                    <h3>Schedule & Calendar</h3>
-                    <p>Stay on track with intuitive scheduling tools. View your workout calendar, set reminders, and sync with Google Calendar.</p>
-                    <ul class="feature-list">
-                        <li>✓ Weekly workout calendar</li>
-                        <li>✓ Smart reminders</li>
-                        <li>✓ Email & calendar integration</li>
-                    </ul>
-                </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">👥</div>
-                    <h3>Community</h3>
-                    <p>Connect with fellow fitness enthusiasts. Share progress, join challenges, and find workout partners in our active community.</p>
-                    <ul class="feature-list">
-                        <li>✓ Community feed & posts</li>
-                        <li>✓ Fitness challenges</li>
-                        <li>✓ Connect with partners</li>
-                    </ul>
-                </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">📊</div>
-                    <h3>Progress Tracking</h3>
-                    <p>Visualize your transformation with weight charts, workout logs, and progress photos. Stay motivated by seeing your results.</p>
-                    <ul class="feature-list">
-                        <li>✓ Weight tracking charts</li>
-                        <li>✓ Workout history</li>
-                        <li>✓ Progress photos</li>
-                    </ul>
-                </div>
-
-                <div class="feature-box">
-                    <div class="feature-icon-large">🌐</div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
                     <h3>Bilingual Support</h3>
-                    <p>Full support for English and Bahasa Melayu. Switch languages instantly to use the app in your preferred language.</p>
-                    <ul class="feature-list">
-                        <li>✓ English & Bahasa Melayu</li>
-                        <li>✓ Instant language toggle</li>
-                        <li>✓ Culturally relevant content</li>
-                    </ul>
+                    <p>Full English & Bahasa Malaysia support. Chat with AI coaches and manage your app in your preferred language.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Smart Scheduling</h3>
+                    <p>Auto-generate weekly workout calendars based on your goals, experience level, and available training days.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">How FitAI Coach Works</h2>
-                <p class="section-subtitle">Start your fitness journey in 3 simple steps</p>
+        <!-- EXERCISE LIBRARY SECTION -->
+        <section class="exercise-library" id="exercises">
+            <div class="max-width">
+                <div class="library-header">
+                    <div class="library-badge">PREVIEW — 3 of 1,000+ exercises</div>
+                    <h2 class="section-title">Preview Our Exercise Library</h2>
+                    <p class="section-subtitle">See what's inside FitAI Coach. Subscribe to unlock your personalized 30-day plan.</p>
+                </div>
+
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="muscle-filter">Muscle Group</label>
+                        <select id="muscle-filter">
+                            <option value="">All Muscles</option>
+                            <option value="biceps">Biceps</option>
+                            <option value="triceps">Triceps</option>
+                            <option value="chest">Chest</option>
+                            <option value="back">Back</option>
+                            <option value="shoulders">Shoulders</option>
+                            <option value="legs">Legs</option>
+                            <option value="abdominals">Abdominals</option>
+                            <option value="glutes">Glutes</option>
+                            <option value="hamstrings">Hamstrings</option>
+                            <option value="quadriceps">Quadriceps</option>
+                            <option value="calves">Calves</option>
+                            <option value="forearms">Forearms</option>
+                            <option value="traps">Traps</option>
+                            <option value="lats">Lats</option>
+                            <option value="middle_back">Middle Back</option>
+                            <option value="lower_back">Lower Back</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="difficulty-filter">Difficulty</label>
+                        <select id="difficulty-filter">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="expert">Expert</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="type-filter">Exercise Type</label>
+                        <select id="type-filter">
+                            <option value="">All Types</option>
+                            <option value="cardio">Cardio</option>
+                            <option value="olympic_weightlifting">Olympic Weightlifting</option>
+                            <option value="plyometrics">Plyometrics</option>
+                            <option value="powerlifting">Powerlifting</option>
+                            <option value="strength">Strength</option>
+                            <option value="stretching">Stretching</option>
+                            <option value="strongman">Strongman</option>
+                        </select>
+                    </div>
+                    <button class="search-btn" onclick="searchExercises()">🔍 Find Exercises</button>
+                </div>
+
+                <div id="exercises-container" class="exercises-grid">
+                    <!-- Default exercises load here -->
+                </div>
             </div>
+        </section>
 
+        <!-- HOW IT WORKS -->
+        <section class="how-it-works">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Get started in 4 simple steps</p>
             <div class="steps-container">
-                <div class="step-card">
+                <div class="connecting-line"></div>
+                <div class="step">
                     <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Create Your Profile</h3>
-                        <p>Tell us about yourself - your age, weight, height, fitness level, and goals. Takes less than 2 minutes.</p>
-                    </div>
-                    <div class="step-visual">
-                        <div class="visual-icon">👤</div>
-                    </div>
+                    <h3>Sign Up</h3>
+                    <p>Choose your plan and create an account. No credit card required — start with Starter at just RM39/month.</p>
                 </div>
-
-                <div class="step-arrow">→</div>
-
-                <div class="step-card">
+                <div class="step">
                     <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Get Your AI Plan</h3>
-                        <p>Our AI instantly generates a personalized workout and nutrition plan designed specifically for you.</p>
-                    </div>
-                    <div class="step-visual">
-                        <div class="visual-icon">🤖</div>
-                    </div>
+                    <h3>Set Your Goals</h3>
+                    <p>Tell us your fitness goals, current level, and preferences. Our AI learns your unique needs.</p>
                 </div>
-
-                <div class="step-arrow">→</div>
-
-                <div class="step-card">
+                <div class="step">
                     <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Start Training</h3>
-                        <p>Follow your plan, track progress, and chat with your AI coach anytime. Watch yourself transform!</p>
+                    <h3>Get AI Plan</h3>
+                    <p>Receive your personalized 30-day workout plan with halal nutrition guidance and exercise modifications.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Track & Improve</h3>
+                    <p>Log workouts, track progress, and get real-time coaching from your AI trainer to stay on course.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section class="pricing" id="pricing">
+            <div class="max-width">
+                <h2 class="section-title">Premium Fitness Coaching</h2>
+                <p class="section-subtitle">Choose your plan and start your transformation</p>
+
+                <div class="pricing-toggle">
+                    <span>Monthly</span>
+                    <div class="toggle-switch" id="pricing-toggle" onclick="togglePricing()">
+                        <div class="toggle-slider"></div>
                     </div>
-                    <div class="step-visual">
-                        <div class="visual-icon">💪</div>
+                    <span>Annual <span class="savings-badge" id="savings-text">Save 24%</span></span>
+                </div>
+
+                <div class="pricing-cards">
+                    <!-- Starter Card -->
+                    <div class="pricing-card">
+                        <h3 class="plan-name">Starter</h3>
+                        <div class="price"><span id="starter-price">RM39</span></div>
+                        <p class="price-period">per month</p>
+                        <ul class="features-list">
+                            <li>Unlimited AI fitness coaching</li>
+                            <li>Personalized 30-day workout plans</li>
+                            <li>Full halal nutrition guide</li>
+                            <li>Exercise database (1,000+ exercises)</li>
+                            <li>Progress tracking & analytics</li>
+                            <li>Priority support</li>
+                        </ul>
+                        <button onclick="checkout('starter')">Get Started →</button>
+                        <p class="guarantee">30-Day Money Back Guarantee</p>
+                    </div>
+
+                    <!-- Elite Card -->
+                    <div class="pricing-card featured">
+                        <h3 class="plan-name">Elite</h3>
+                        <div class="price"><span id="elite-price">RM79</span></div>
+                        <p class="price-period">per month</p>
+                        <ul class="features-list">
+                            <li>Everything in Starter</li>
+                            <li>Live video workout sessions</li>
+                            <li>Personal trainer consultation (2x/month)</li>
+                            <li>Custom meal planning</li>
+                            <li>Family plan (up to 5 members)</li>
+                            <li>WhatsApp direct support</li>
+                        </ul>
+                        <button onclick="checkout('elite')">Get Started →</button>
+                        <p class="guarantee">30-Day Money Back Guarantee</p>
+                    </div>
+
+                    <!-- Why No Free Tier -->
+                    <div class="no-free-tier">
+                        <h3>Why Paid Only?</h3>
+                        <p>We don't offer a free plan so we can focus 100% on delivering premium results. Every member gets our full attention, premium AI training, and responsive support. Quality over quantity — that's our commitment to you.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">Simple, Transparent Pricing</h2>
-                <p class="section-subtitle">Start free, upgrade when you're ready</p>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-box">
-                    <div class="pricing-header">
-                        <h3>Free</h3>
-                        <div class="price">
-                            <span class="price-currency">RM</span>
-                            <span class="price-amount">0</span>
-                            <span class="price-period">/month</span>
-                        </div>
-                        <p class="pricing-desc">Perfect to get started</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><span class="check">✓</span> Basic workout plans (7-day)</li>
-                        <li><span class="check">✓</span> Basic nutrition tips</li>
-                        <li><span class="check">✓</span> 5 AI chat messages/day</li>
-                        <li><span class="check">✓</span> Weight tracking only</li>
-                        <li><span class="check">✓</span> Browse deals & opportunities</li>
-                        <li><span class="check">✓</span> View community posts</li>
-                        <li><span class="check">✓</span> Basic schedule view</li>
-                        <li><span class="check">✓</span> English & Bahasa Melayu</li>
-                    </ul>
-                    <button class="btn-pricing" onclick="showSignupModal()">Start Free</button>
-                </div>
-
-                <div class="pricing-box featured">
-                    <div class="popular-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Premium</h3>
-                        <div class="price">
-                            <span class="price-currency">RM</span>
-                            <span class="price-amount">29</span>
-                            <span class="price-period">/month</span>
-                        </div>
-                        <p class="pricing-desc">For serious fitness enthusiasts</p>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><span class="check">✓</span> Unlimited workout plans (90-day)</li>
-                        <li><span class="check">✓</span> Full personalized meal plans</li>
-                        <li><span class="check">✓</span> Unlimited AI coach chat</li>
-                        <li><span class="check">✓</span> Full progress tracking & photos</li>
-                        <li><span class="check">✓</span> AI shopping recommendations</li>
-                        <li><span class="check">✓</span> AI career coaching & job alerts</li>
-                        <li><span class="check">✓</span> Calendar & email integration</li>
-                        <li><span class="check">✓</span> Post & interact in community</li>
-                        <li><span class="check">✓</span> Priority support</li>
-                    </ul>
-                    <button class="btn-pricing-premium" onclick="showSignupModal()">Start Premium Trial</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">What Our Users Say</h2>
-                <p class="section-subtitle">Join thousands of satisfied fitness enthusiasts</p>
-            </div>
-
-            <div class="testimonials-grid">
+        <!-- TESTIMONIALS -->
+        <section class="testimonials" id="testimonials">
+            <h2 class="section-title">Loved by Our Members</h2>
+            <p class="section-subtitle">Real results from real people in Malaysia</p>
+            <div class="testimonial-carousel">
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"FitAI Coach changed my life! The AI-generated workouts are perfect for my busy schedule, and the halal meal suggestions are a game-changer."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">A</div>
-                        <div class="author-info">
-                            <div class="author-name">Ahmad Razak</div>
-                            <div class="author-location">Kuala Lumpur</div>
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨</div>
+                        <div>
+                            <div class="testimonial-name">Ahmad Hassan</div>
+                            <div class="testimonial-role">Kuala Lumpur, Malaysia</div>
                         </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"FitAI completely transformed my fitness journey. The AI coaching is incredibly personalized — it even respects my halal dietary needs. Lost 12kg in 3 months!"</p>
+                    <div class="testimonial-result">
+                        <div class="result-metric">-12 kg</div>
+                        <div class="result-description">Lost in 3 months</div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"Lost 8kg in 2 months! The personalized plans and AI coach kept me motivated. Best fitness app I've ever used."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">S</div>
-                        <div class="author-info">
-                            <div class="author-name">Siti Nurhaliza</div>
-                            <div class="author-location">Penang</div>
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👩</div>
+                        <div>
+                            <div class="testimonial-name">Sarah Tan</div>
+                            <div class="testimonial-role">Penang, Malaysia</div>
                         </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"As a busy mother, I needed flexibility. FitAI gives me workouts that fit my schedule, nutrition advice I actually follow, and an AI coach that never judges. Worth every ringgit!"</p>
+                    <div class="testimonial-result">
+                        <div class="result-metric">+8 kg</div>
+                        <div class="result-description">Muscle gained in 4 months</div>
                     </div>
                 </div>
 
                 <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">👨</div>
+                        <div>
+                            <div class="testimonial-name">Rizwan Ali</div>
+                            <div class="testimonial-role">Singapore</div>
+                        </div>
+                    </div>
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"The bilingual support is amazing! I can switch between English and BM easily. The workouts are challenging but achievable."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">R</div>
-                        <div class="author-info">
-                            <div class="author-name">Raj Kumar</div>
-                            <div class="author-location">Johor Bahru</div>
+                    <p class="testimonial-text">"The bilingual support is a game-changer for me. Getting fitness advice in Malay or English whenever I need it — this is next-level. Best investment in my health."</p>
+                    <div class="testimonial-result">
+                        <div class="result-metric">4% BF</div>
+                        <div class="result-description">Body fat reduction</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="faq" id="faq">
+            <div class="max-width">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+
+                <div class="accordion" id="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Is FitAI Coach suitable for beginners?
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                Absolutely! FitAI Coach is designed for all fitness levels. Our AI adapts workouts based on your current fitness level and progressively increases intensity as you improve. We have beginner-friendly exercises with detailed instructions in the exercise library.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Are the nutrition plans halal-certified?
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                All nutrition recommendations are 100% halal-compliant, focusing on halal-certified foods available in Malaysia and Southeast Asia. Our AI only suggests ingredients and meals that follow Islamic dietary guidelines.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Can I cancel my subscription anytime?
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                Yes, you can cancel anytime with no penalty. Plus, we offer a 30-day money-back guarantee. If you're not satisfied with your results in the first month, we'll refund your subscription fee fully.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Is there a free trial for Premium?
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                We don't offer a free trial, but every subscription comes with a 30-day money-back guarantee. If FitAI Coach doesn't meet your expectations, you'll get a full refund. Plus, you can explore our exercise library preview for free to see what's inside.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Does FitAI Coach work offline?
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                FitAI Coach requires an internet connection for real-time AI coaching, downloading your personalized plans, and syncing progress data. Some exercise descriptions can be viewed offline once downloaded in the app.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Can I use it for multiple family members?
+                            <span class="accordion-icon">▼</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-body">
+                                The Starter plan is for individual use. The Elite plan includes a Family Plan feature that allows you to create customized coaching profiles for up to 5 family members, each with their own goals and progress tracking.
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content">
-                <h2>Ready to Transform Your Fitness Journey?</h2>
-                <p>Join thousands of Malaysians achieving their fitness goals with AI-powered coaching</p>
-                <button class="btn-cta-large" onclick="showSignupModal()">
-                    Get Started Free - No Credit Card Required
-                </button>
-                <p class="cta-note">✓ Free forever plan available  ✓ Upgrade anytime  ✓ Cancel anytime</p>
+        <!-- FINAL CTA SECTION -->
+        <section class="final-cta">
+            <div class="max-width">
+                <h2 class="section-title">Start Your Transformation Today</h2>
+                <p class="section-subtitle">Join 1,000+ Malaysians already using FitAI Coach</p>
+                <form class="cta-form" onsubmit="handleCTASubmit(event)">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Get Started Free →</button>
+                </form>
+                <p class="fine-print">💳 No credit card required. Cancel anytime. 30-Day Money Back Guarantee.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FitAI Coach</h4>
+                <p>Your AI-Powered Fitness & Wellness Companion built for Malaysia & Southeast Asia.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#exercises">Exercise Library</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="https://wa.me/60137057833" title="WhatsApp">💬</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <img src="logo.png" alt="FitAI Coach Logo" class="logo-image" width="50" height="50" loading="lazy">
-                        <span>FitAI Coach</span>
-                    </div>
-                    <p class="footer-desc">Your AI-powered personal fitness coach for Malaysia and Southeast Asia.</p>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Product</h4>
-                    <ul class="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 FitAI Coach. All rights reserved. Made with ❤️ in Malaysia 🇲🇾</p>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 FitAI Coach by MindPilot. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Login Modal -->
-    <div id="login-modal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeLoginModal()">&times;</button>
-                <h2>Welcome Back!</h2>
-                <p class="modal-subtitle">Login to continue your fitness journey</p>
-                
-                <form class="auth-form" onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="login-email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
-                    </div>
-                    <button type="submit" class="btn-modal-primary">Login</button>
-                </form>
-
-                <div class="divider">
-                    <span>OR</span>
-                </div>
-
-                <button class="btn-social google" onclick="loginWithGoogle()">
-                    <span class="social-icon">G</span>
-                    Continue with Google
-                </button>
-
-                <p class="modal-footer-text">
-                    Don't have an account? 
-                    <a href="#" onclick="switchToSignup()">Sign up free</a>
-                </p>
-            </div>
-        </div>
+    <!-- POPUPS -->
+    <div class="popup-overlay" id="popup-overlay"></div>
+    <div class="exit-popup" id="exit-popup">
+        <button class="popup-close" onclick="closeExitPopup()">✕</button>
+        <h3>Wait! Don't leave yet</h3>
+        <p>Get your personalized AI fitness plan for only <strong>RM39/month</strong>. Transform your body with halal nutrition + 1,000+ exercises + real-time AI coaching.</p>
+        <button onclick="scrollToSection('pricing')">Subscribe Now →</button>
+        <button class="secondary-btn" onclick="closeExitPopup()">Continue Browsing</button>
     </div>
 
-    <!-- Signup Modal -->
-    <div id="signup-modal" class="modal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <button class="modal-close" onclick="closeSignupModal()">&times;</button>
-                <h2>Start Your Free Journey</h2>
-                <p class="modal-subtitle">Create your account in seconds</p>
-                
-                <form class="auth-form" onsubmit="handleSignup(event)">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="signup-name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" id="signup-email" placeholder="your@email.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                        <input type="password" id="signup-password" placeholder="Create a password (min 6 characters)" required minlength="6">
-                    </div>
-                    <div class="form-checkbox">
-                        <input type="checkbox" id="terms" required>
-                        <label for="terms">I agree to the <a href="terms-and-conditions.html" target="_blank" style="color: var(--primary-color);">Terms & Conditions</a> and <a href="privacy-policy.html" target="_blank" style="color: var(--primary-color);">Privacy Policy</a></label>
-                    </div>
-                    <button type="submit" class="btn-modal-primary">Create Free Account</button>
-                </form>
-
-                <div class="divider">
-                    <span>OR</span>
-                </div>
-
-                <button class="btn-social google" onclick="signupWithGoogle()">
-                    <span class="social-icon">G</span>
-                    Continue with Google
-                </button>
-
-                <p class="modal-footer-text">
-                    Already have an account? 
-                    <a href="#" onclick="switchToLogin()">Login</a>
-                </p>
-            </div>
-        </div>
+    <!-- MOBILE STICKY BAR -->
+    <div class="mobile-sticky-bar" id="mobile-sticky-bar">
+        <p>💪 Transform your body from RM39/month</p>
+        <button onclick="scrollToSection('pricing')">Start Today</button>
     </div>
 
-    <!-- Firebase SDK - defer to avoid render blocking -->
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
-    
-    <!-- Firebase Configuration & Functions -->
-    <script defer src="firebase-config.js"></script>
-    <script defer src="firebase-auth.js"></script>
-    <script defer src="firebase-database.js"></script>
-    
-    <!-- Translations -->
-    <script defer src="landing-translations.js"></script>
-    
-    <!-- Landing Page Script -->
-    <script defer src="landing-script.js"></script>
+    <script>
+        const API_KEY = '2YtInBlDoqONs9EsR9mc3XTUrpTlaFLRZ9pOtFIT';
+        const API_BASE = 'https://api.api-ninjas.com/v1/exercises';
+        let isAnnual = false;
+        let currentExercises = [];
+        let exercisesLoaded = false;
+
+        // INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDefaultExercises();
+            setupScrollListeners();
+            setupNavigation();
+            showMobileStickyBar();
+            // Setup nav scroll effect
+            window.addEventListener('scroll', () => {
+                const nav = document.querySelector('nav');
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                } else {
+                    nav.classList.remove('scrolled');
+                }
+            });
+        });
+
+        // EXERCISE API FUNCTIONS
+        async function loadDefaultExercises() {
+            try {
+                const response = await fetch(`${API_BASE}?muscle=chest&difficulty=beginner`, {
+                    headers: { 'X-Api-Key': API_KEY }
+                });
+                if (!response.ok) throw new Error('API Error');
+                const data = await response.json();
+                currentExercises = data.slice(0, 6);
+                displayExercises(currentExercises);
+            } catch (error) {
+                console.error('Error loading exercises:', error);
+                showEmptyState();
+            }
+        }
+
+        async function searchExercises() {
+            const muscle = document.getElementById('muscle-filter').value;
+            const difficulty = document.getElementById('difficulty-filter').value;
+            const type = document.getElementById('type-filter').value;
+            const btn = document.querySelector('.search-btn');
+
+            if (!muscle && !difficulty && !type) {
+                alert('Please select at least one filter');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Searching...';
+            showLoadingState();
+
+            try {
+                let url = `${API_BASE}?`;
+                const params = [];
+                if (muscle) params.push(`muscle=${muscle}`);
+                if (difficulty) params.push(`difficulty=${difficulty}`);
+                if (type) params.push(`type=${type}`);
+                url += params.join('&');
+
+                const response = await fetch(url, {
+                    headers: { 'X-Api-Key': API_KEY }
+                });
+                if (!response.ok) throw new Error('API Error');
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    showEmptyState();
+                } else {
+                    currentExercises = data.slice(0, 6);
+                    displayExercises(currentExercises);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showEmptyState();
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔍 Find Exercises';
+            }
+        }
+
+        function displayExercises(exercises) {
+            const container = document.getElementById('exercises-container');
+            container.innerHTML = '';
+
+            exercises.forEach((exercise, index) => {
+                const isLocked = index >= 3;
+                const card = document.createElement('div');
+                card.className = `exercise-card ${isLocked ? 'locked' : ''}`;
+                card.innerHTML = `
+                    <h4>${exercise.name}</h4>
+                    <div class="badge-group">
+                        <span class="badge badge-type">${exercise.type}</span>
+                        <span class="badge badge-muscle">${exercise.muscle}</span>
+                        <span class="badge badge-difficulty ${exercise.difficulty}">${exercise.difficulty}</span>
+                    </div>
+                    <div class="exercise-equipment">
+                        <strong>Equipment:</strong> ${exercise.equipment || 'Body weight'}
+                    </div>
+                    <button class="instructions-toggle" onclick="toggleInstructions(this)">📖 Show Steps</button>
+                    <div class="instructions">
+                        <ol>
+                            ${exercise.instructions.split('. ').map((step, idx) =>
+                                `<li>${step.trim()}${idx < exercise.instructions.split('. ').length - 1 ? '.' : ''}</li>`
+                            ).join('')}
+                        </ol>
+                    </div>
+                    ${isLocked ? `
+                        <div class="locked-overlay">
+                            <div class="locked-overlay-text">🔒 Premium Only</div>
+                            <button class="exercise-cta" onclick="scrollToSection('pricing')">Unlock Full Access</button>
+                        </div>
+                    ` : `
+                        <button class="exercise-cta" onclick="addToPlan('${exercise.name}')">Add to My Plan →</button>
+                    `}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleInstructions(btn) {
+            const instructions = btn.nextElementSibling;
+            instructions.classList.toggle('active');
+            btn.textContent = instructions.classList.contains('active') ? '📖 Hide Steps' : '📖 Show Steps';
+        }
+
+        function addToPlan(exerciseName) {
+            scrollToSection('pricing');
+            showMessage(`Added "${exerciseName}" to your plan!`);
+        }
+
+        function showLoadingState() {
+            const container = document.getElementById('exercises-container');
+            container.innerHTML = `
+                <div class="loading-container">
+                    <div class="skeleton"></div>
+                    <div class="skeleton"></div>
+                    <div class="skeleton"></div>
+                </div>
+            `;
+        }
+
+        function showEmptyState() {
+            const container = document.getElementById('exercises-container');
+            container.innerHTML = '<div class="empty-state"><p>No exercises found. Try different filters!</p></div>';
+        }
+
+        // PRICING TOGGLE
+        function togglePricing() {
+            isAnnual = !isAnnual;
+            const toggle = document.getElementById('pricing-toggle');
+            toggle.classList.toggle('active');
+
+            const starterPrice = isAnnual ? 'RM299' : 'RM39';
+            const elitePrice = isAnnual ? 'RM599' : 'RM79';
+            const savingsText = isAnnual ? 'Save 35%' : 'Save 24%';
+
+            document.getElementById('starter-price').textContent = starterPrice;
+            document.getElementById('elite-price').textContent = elitePrice;
+            document.getElementById('savings-text').textContent = savingsText;
+        }
+
+        // CHECKOUT
+        function checkout(plan) {
+            const price = isAnnual
+                ? (plan === 'starter' ? 299 : 599)
+                : (plan === 'starter' ? 39 : 79);
+            alert(`Redirecting to checkout for ${plan.toUpperCase()} plan (RM${price}/${isAnnual ? 'year' : 'month'})...`);
+            // In production, redirect to Stripe or payment processor
+            // window.location.href = `https://your-payment-link.com?plan=${plan}&annual=${isAnnual}`;
+        }
+
+        // ACCORDION
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+
+            document.querySelectorAll('.accordion-item').forEach(itm => {
+                itm.classList.remove('active');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // NAVIGATION
+        function setupNavigation() {
+            const hamburger = document.querySelector('.hamburger');
+            if (hamburger) {
+                hamburger.addEventListener('click', toggleMobileMenu);
+            }
+
+            document.querySelectorAll('.nav-links a, .cta-btn').forEach(link => {
+                if (link.getAttribute('href')?.startsWith('#')) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const target = link.getAttribute('href');
+                        scrollToSection(target);
+                        closeMobileMenu();
+                    });
+                }
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId.replace('#', ''));
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleMobileMenu() {
+            // Implement mobile menu toggle if needed
+        }
+
+        function closeMobileMenu() {
+            // Close mobile menu if open
+        }
+
+        // EXIT INTENT POPUP
+        document.addEventListener('mouseleave', () => {
+            if (!sessionStorage.getItem('exitPopupShown')) {
+                showExitPopup();
+                sessionStorage.setItem('exitPopupShown', 'true');
+            }
+        });
+
+        function showExitPopup() {
+            const popup = document.getElementById('exit-popup');
+            const overlay = document.getElementById('popup-overlay');
+            popup.classList.add('active');
+            overlay.classList.add('active');
+        }
+
+        function closeExitPopup() {
+            const popup = document.getElementById('exit-popup');
+            const overlay = document.getElementById('popup-overlay');
+            popup.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+
+        // MOBILE STICKY BAR
+        function showMobileStickyBar() {
+            if (window.innerWidth <= 768) {
+                const bar = document.getElementById('mobile-sticky-bar');
+                bar.classList.add('active');
+                document.body.style.paddingBottom = '80px';
+            }
+        }
+
+        // SCROLL ANIMATION SETUP
+        function setupScrollListeners() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        if (entry.target.classList.contains('stats-counter')) {
+                            animateCounter(entry.target);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('.section-title, .feature-card, .step, .testimonial-card').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        function animateCounter(element) {
+            if (element.dataset.animated) return;
+            element.dataset.animated = 'true';
+
+            const target = parseInt(element.dataset.target);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // CTA FORM
+        function handleCTASubmit(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            alert(`Thanks for your interest! We'll send details to ${email}`);
+            e.target.reset();
+        }
+
+        // UTILITY
+        function showMessage(text) {
+            // Simple toast notification (can be enhanced)
+            console.log(text);
+        }
+
+        // Handle window resize for mobile sticky bar
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                document.getElementById('mobile-sticky-bar').classList.add('active');
+                document.body.style.paddingBottom = '80px';
+            } else {
+                document.getElementById('mobile-sticky-bar').classList.remove('active');
+                document.body.style.paddingBottom = '0';
+            }
+        });
+    </script>
 </body>
 </html>
