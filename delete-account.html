@@ -349,51 +349,42 @@
                 </ul>
             </section>
 
-            <!-- Account Deletion Form -->
+            <!-- Account Deletion Form (works: signs in, then deletes via the deleteAccount Cloud Function) -->
             <section class="legal-section">
-                <h2>Request Account Deletion</h2>
-                <p>Please fill out the form below to request deletion of your account. We will process your request within 7 business days and send a confirmation email.</p>
-
-                <form class="deletion-form" id="deletionForm">
+                <h2>Delete your account / Padam akaun anda</h2>
+                <p>Sign in with the email and password you use in the FitAI Coach app. Your account and data are deleted immediately after you confirm. Subscriptions bought through Google Play or the App Store must also be cancelled in that store.</p>
+                <p>Log masuk dengan e-mel dan kata laluan aplikasi FitAI Coach. Akaun dan data anda dipadam serta-merta selepas pengesahan. Langganan Google Play atau App Store perlu dibatalkan di kedai tersebut.</p>
+                <form class="deletion-form" id="deletionForm" novalidate>
                     <div class="form-group">
-                        <label for="email">Account Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="Enter your registered email">
+                        <label for="email">Account email / E-mel akaun *</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="you@example.com">
                     </div>
-
                     <div class="form-group">
-                        <label for="reason">Reason for Deletion (Optional)</label>
-                        <textarea id="reason" name="reason" placeholder="Help us improve by sharing why you're leaving..."></textarea>
+                        <label for="password">Password / Kata laluan *</label>
+                        <input type="password" id="password" name="password" required autocomplete="current-password">
                     </div>
-
                     <div class="form-group">
-                        <label for="confirm-text">Type "DELETE" to confirm *</label>
-                        <input type="text" id="confirm-text" name="confirm-text" required placeholder="DELETE" pattern="DELETE">
+                        <label for="confirm-text">Type DELETE to confirm / Taip DELETE untuk mengesahkan *</label>
+                        <input type="text" id="confirm-text" name="confirm-text" required autocomplete="off" placeholder="DELETE">
                     </div>
-
                     <div class="checkbox-group">
                         <input type="checkbox" id="understand" name="understand" required>
-                        <label for="understand">I understand that deleting my account is permanent and cannot be undone. All my data will be permanently deleted within 30 days. *</label>
+                        <label for="understand">I understand this is permanent and cannot be undone. / Saya faham tindakan ini kekal dan tidak boleh dibatalkan. *</label>
                     </div>
-
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="subscription" name="subscription">
-                        <label for="subscription">I have canceled any active subscriptions (if applicable). I understand that deleting my account does not automatically refund any payments.</label>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Request Account Deletion</button>
+                    <p id="delError" role="alert" style="color:#d9534f;min-height:1.2em;margin:8px 0"></p>
+                    <button type="submit" class="submit-btn" id="delBtn">Delete my account / Padam akaun saya</button>
                 </form>
-
                 <div class="success-message" id="successMessage">
-                    <h3>Deletion Request Received</h3>
-                    <p>We have received your account deletion request. A confirmation email has been sent to your registered email address. Your account will be deleted within 7 business days.</p>
-                    <p>If you have any questions, please contact us at <a href="mailto:support@fitaicoach.com">support@fitaicoach.com</a></p>
+                    <h3>Account deleted / Akaun dipadam</h3>
+                    <p>Your FitAI Coach account and its data have been permanently deleted. / Akaun FitAI Coach dan datanya telah dipadam secara kekal.</p>
                 </div>
+                <p style="margin-top:16px">Can't sign in or forgot your password? Email <a href="mailto:privacyfitaicoach@hotmail.com?subject=Account%20deletion%20request">privacyfitaicoach@hotmail.com</a> from your account email and we will delete your account within 7 days. / Tidak dapat log masuk? E-mel kami dari alamat e-mel akaun anda dan kami akan memadam akaun dalam masa 7 hari.</p>
             </section>
 
             <!-- Alternative Contact Section -->
             <div class="contact-alternative">
                 <h3>Need Help?</h3>
-                <p>If you're experiencing issues or have concerns, our support team is here to help. Contact us at <a href="mailto:support@fitaicoach.com">support@fitaicoach.com</a> before proceeding with deletion.</p>
+                <p>If you're experiencing issues or have concerns, our support team is here to help. Contact us at <a href="mailto:privacyfitaicoach@hotmail.com">privacyfitaicoach@hotmail.com</a> before proceeding with deletion.</p>
             </div>
         </div>
     </main>
@@ -418,7 +409,7 @@
             </div>
             <div class="footer-section">
                 <h4>Contact</h4>
-                <p>Email: <a href="mailto:support@fitaicoach.com">support@fitaicoach.com</a></p>
+                <p>Email: <a href="mailto:privacyfitaicoach@hotmail.com">privacyfitaicoach@hotmail.com</a></p>
             </div>
         </div>
         <div class="footer-bottom">
@@ -426,22 +417,45 @@
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="firebase-config.js"></script>
     <script>
-        // Form submission handler
-        document.getElementById('deletionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // In production, this would send data to your backend
-            // For now, show success message
-            document.getElementById('deletionForm').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-            
-            // Scroll to success message
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-            
-            // Log for debugging (remove in production)
-            console.log('Account deletion requested for:', document.getElementById('email').value);
-        });
+        (function () {
+            var DELETE_URL = 'https://deleteaccount-ow42qa5fnq-uc.a.run.app';
+            var form = document.getElementById('deletionForm');
+            var err = document.getElementById('delError');
+            var btn = document.getElementById('delBtn');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                err.textContent = '';
+                var email = document.getElementById('email').value.trim();
+                var pw = document.getElementById('password').value;
+                if (document.getElementById('confirm-text').value.trim().toUpperCase() !== 'DELETE') { err.textContent = 'Type DELETE to confirm. / Taip DELETE untuk mengesahkan.'; return; }
+                if (!document.getElementById('understand').checked) { err.textContent = 'Tick the confirmation box. / Tandakan kotak pengesahan.'; return; }
+                if (typeof firebase === 'undefined') { err.textContent = 'Could not load. Check your connection. / Gagal dimuatkan. Semak sambungan anda.'; return; }
+                if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+                btn.disabled = true; btn.textContent = 'Deleting… / Memadam…';
+                firebase.auth().signInWithEmailAndPassword(email, pw)
+                    .then(function (cred) { return cred.user.getIdToken(); })
+                    .then(function (token) {
+                        return fetch(DELETE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, body: '{}' });
+                    })
+                    .then(function (r) { if (!r.ok) throw new Error('server'); return firebase.auth().signOut(); })
+                    .then(function () {
+                        form.style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'block';
+                        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                    })
+                    .catch(function (e2) {
+                        btn.disabled = false; btn.textContent = 'Delete my account / Padam akaun saya';
+                        var c = (e2 && e2.code) || '';
+                        err.textContent = /password|credential|user-not-found|invalid-login/.test(c)
+                            ? 'Email or password is incorrect. / E-mel atau kata laluan salah.'
+                            : 'Something went wrong. Try again or email us. / Ada masalah. Cuba lagi atau e-mel kami.';
+                    });
+            });
+        })();
     </script>
 </body>
 </html>

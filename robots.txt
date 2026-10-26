@@ -1,6 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /app.html
-Disallow: /www/
-
 Sitemap: https://www.mindpilot.online/sitemap.xml
